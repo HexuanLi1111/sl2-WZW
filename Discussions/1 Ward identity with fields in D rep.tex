@@ -1,11 +1,10 @@
-
 \documentclass[10pt,a4paper]{article}
-\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}% 设置 book 格式的页边距
-\usepackage{indentfirst} %首行缩进宏包
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{indentfirst} 
 \setlength{\parindent}{2em}
 \usepackage{multicol}
 \usepackage{setspace}
-\usepackage{bm} %\bm 命令在数学环境下加粗符号, 可以用于标记矢量
+\usepackage{bm} 
 \usepackage{pifont}
 \usepackage{float}
 \usepackage{cite}
@@ -14,17 +13,17 @@
 \usepackage{amsmath}
 \usepackage{tikz}
 \numberwithin{equation}{section}
-\renewcommand{\baselinestretch}{1.5} % 调整行间距, 推荐 1.5 倍行间距.
+\renewcommand{\baselinestretch}{1.5} 
 
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\vev}[1]{\left< #1 \right>}
 
 
 \begin{document}
-\title{Ward identity with fields in D representation}
+\title{Fields in D representation}
 \maketitle
 
-
+\section{Ward identity}
 Consider a discrete series representation $\hat{D}^{j_{D},+}$. There is a $\mathfrak{sl}_{2}$ lowest weight state $\ket{j_{D},j_{D}}$ such that 
 $J^{-}_{0} \ket{j_{D},j_{D}} = 0$. Hence the corresponding field satisfies 
 \begin{equation}
@@ -66,4 +65,33 @@ Which has no solution.\\
 
 \textcolor{red}{Problem solved. \ref{eq1} should be writen in m basis since $\ket{j,m}$ is eigenstate of $J^{0}_{0}$. Hence we 
 cannot define a field in x basis corresponding the highest weight state.}
+
+\section{Transformation between $m$ and $x$ basis}
+The transformation from x-basis to $\mu$-basis is 
+\begin{equation}
+    \phi^{j}_{\mu} = \int \mathrm{d} x \, \mathrm{e}^{- \mu x} \phi^{j}_{x}.
+\end{equation}
+
+Consider the D series representation $\hat{D}^{j,+}$. The lowest weight state $\ket{j, -j}$ corresponds to $\mu$-basis field 
+\begin{equation}
+    \left.\phi^{j}_{\mu}\right|_{\mu = 0} = \int \mathrm{d} x \, \phi^{j}_{x}.
+\end{equation}
+This can be examined in $\mu$-basis: 
+\begin{equation}
+    J^{-}_{0} \phi^{j}_{ 0} = \left.\mu \phi^{j}_{\mu}\right|_{\mu = 0} = 0,
+\end{equation}
+or in x-basis:
+\begin{equation}
+    J^{-}_{0} \int \mathrm{d} x \, \phi^{j}_{x} = \int \mathrm{d} x \, - \partial_{x} \phi^{j}_{x} = 0.
+\end{equation}
+
+However, this will lead to a problem. The eigenvalue of $J^{0}_{0}$ on $\ket{j, -j}$ shoule be $-j$. On the other hand, we have 
+\begin{align}
+    J^{0}_{0} \phi^{j}_{\mu = 0} & = \int \mathrm{d} x \, J^{0}_{0} \phi^{j}_{x} \\
+                                 & = \int \mathrm{d} x \, (x\partial_{x} - j) \phi^{j}_{x}\\
+                                 & = (1-j) \phi^{j}_{\mu = 0} \neq -j \phi^{j}_{\mu = 0}.
+\end{align}
+
+\textcolor{red}{The complex conjugate of $j$ rep. is $-j-1$, which keeps the quadratic Casimir invariant.}
+
 \end{document}
