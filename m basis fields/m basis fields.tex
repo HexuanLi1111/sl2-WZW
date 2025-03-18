@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}% 设置 book 格式的页边距
+\usepackage{indentfirst} %首行缩进宏包
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} %\bm 命令在数学环境下加粗符号, 可以用于标记矢量
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} % 调整行间距, 推荐 1.5 倍行间距.
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left< #1 \right>}
+
+
+\begin{document}
+\title{m basis fields}
+\maketitle
+
+The transformation from x-basis to $\mu$-basis is 
+\begin{equation}
+    \phi^{j}_{\mu} = \int \mathrm{d} x \, \mathrm{e}^{- \mu x} \phi^{j}_{x}.
+\end{equation}
+
+Consider the D series representation $\hat{D}^{j,+}$. The lowest weight state $\ket{j, -j}$ corresponds to $\mu$-basis field 
+\begin{equation}
+    \left.\phi^{j}_{\mu}\right|_{\mu = 0} = \int \mathrm{d} x \, \phi^{j}_{x}.
+\end{equation}
+This can be examined in $\mu$-basis: 
+\begin{equation}
+    J^{-}_{0} \phi^{j}_{ 0} = \left.\mu \phi^{j}_{\mu}\right|_{\mu = 0} = 0,
+\end{equation}
+or in x-basis:
+\begin{equation}
+    J^{-}_{0} \int \mathrm{d} x \, \phi^{j}_{x} = \int \mathrm{d} x \, - \partial_{x} \phi^{j}_{x} = 0.
+\end{equation}
+
+However, this will lead to a problem. The eigenvalue of $J^{0}_{0}$ on $\ket{j, -j}$ shoule be $-j$. On the other hand, we have 
+\begin{align}
+    J^{0}_{0} \phi^{j}_{\mu = 0} & = \int \mathrm{d} x \, J^{0}_{0} \phi^{j}_{x} \\
+                                 & = \int \mathrm{d} x \, (x\partial_{x} - j) \phi^{j}_{x}\\
+                                 & = (1-j) \phi^{j}_{\mu = 0} \neq -j \phi^{j}_{\mu = 0}.
+\end{align}
+
+\subsection*{2}
+Since the fusion of two $\hat{\mathcal{D}}^{+}$ will not give $\hat{\mathcal{D}}^{-}$, the 3-point function involving three $\phi^{j}_{0}$
+should be equal to 0. However, we have 
+\begin{align}
+    \vev{\phi^{j}_{0}(z_{1})\phi^{j}_{0}(z_{2})\phi^{j}_{0}(z_{3})} & = \int \mathrm{d} x_{1} \mathrm{d} x_{2} \mathrm{d} x_{3} \, \vev{\phi^{j}_{x_{1}}(z_{1})\phi^{j}_{x_{2}}(z_{2})\phi^{j}_{x_{3}}(z_{3})} \\
+    & = \int \mathrm{d} x_{1} \mathrm{d} x_{2} \mathrm{d} x_{3} \, C^{j_{1},j_{2},j_{3}}(z_{1},z_{2},z_{3}) x_{12}^{j_{1}+j_{2}-j_{3}} x_{23}^{j_{2}+j_{3}-j_{1}} x_{31}^{j_{3}+j_{1}-j_{2}}.   \\
+\end{align}
+There's no constraint on this integral such that the 3-point function should be 0.
+\end{document}

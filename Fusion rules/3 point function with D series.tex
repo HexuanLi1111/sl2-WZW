@@ -1,0 +1,68 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}% 设置 book 格式的页边距
+\usepackage{indentfirst} %首行缩进宏包
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} %\bm 命令在数学环境下加粗符号, 可以用于标记矢量
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} % 调整行间距, 推荐 1.5 倍行间距.
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left< #1 \right>}
+
+
+\begin{document}
+\title{3 point function with D series representation}
+\maketitle
+
+
+Consider a discrete series representation $\hat{D}^{j_{D},+}$. There is a $\mathfrak{sl}_{2}$ lowest weight state $\ket{j_{D},j_{D}}$ such that 
+$J^{-}_{0} \ket{j_{D},j_{D}} = 0$. Hence the corresponding field satisfies 
+\begin{equation}
+    J^{-}_{0} \phi^{j_{D}}_{j_{D},x}(z) = 0. \label{eq1}
+\end{equation}
+
+Insert this equation to 3 point functions, we find 
+\begin{equation}
+    \vev{J^{-,(z_{1})}_{0} \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0.
+\end{equation}
+It means 
+\begin{equation}
+    \oint dz \vev{J^{-}(z) \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0,
+\end{equation}
+where the contour is chosen to be around $z_{1}$ but not including $z_{2}$ and $z_{3}$. Using the OPE between $J$ and affine primary
+fields, we find 
+\begin{equation}
+    \oint dz \vev{\frac{D^{j_{D}}_{x_{1}}(t^{-})}{z-z_{1}} \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} +
+    \sum_{s=2,3} \oint dz \vev{ \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \frac{D^{j_{s}}_{x_{s}}(t^{-})}{z-z_{s}} \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0
+\end{equation}
+The second term has no sigularity at $z_{1}$, hence has no contribution to the integral. The first term gives 
+\begin{equation}
+    \vev{D^{j_{D}}_{x_{1}}(t^{-}) \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0.
+\end{equation}
+In x-basis, it means 
+\begin{equation}
+    \partial_{1}\vev{ \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0.
+\end{equation}
+But since we know 
+\begin{equation}
+    \vev{ \phi^{j_{D}}_{j_{D},x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} \thicksim  x_{12}^{j_{D} + j_{2}-j_{3}}x_{23}^{j_{2}+j_{3} - j_{D}} x_{31}^{j_{3} + j_{D}-j_{1}},
+\end{equation}
+The derivative w.r.t. $x_{1}$ means
+\begin{align}
+    j_{D} + j_{2}-j_{3} = 0, \\
+    j_{3} + j_{D}-j_{2} = 0.
+\end{align}
+Which has no solution.\\
+
+\textcolor{red}{Problem solved. \ref{eq1} should be writen in m basis since $\ket{j,m}$ is eigenstate of $J^{0}_{0}$. Hence we 
+cannot define a field in x basis corresponding the highest weight state.}
+\end{document}
