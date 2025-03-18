@@ -1,3 +1,4 @@
+@ -1,59 +0,0 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}% 设置 book 格式的页边距
 \usepackage{indentfirst} %首行缩进宏包
@@ -20,7 +21,7 @@
 
 
 \begin{document}
-\title{m basis fields}
+\title{Transformation between m and x basis}
 \maketitle
 
 The transformation from x-basis to $\mu$-basis is 
@@ -48,12 +49,6 @@ However, this will lead to a problem. The eigenvalue of $J^{0}_{0}$ on $\ket{j, 
                                  & = (1-j) \phi^{j}_{\mu = 0} \neq -j \phi^{j}_{\mu = 0}.
 \end{align}
 
-\subsection*{2}
-Since the fusion of two $\hat{\mathcal{D}}^{+}$ will not give $\hat{\mathcal{D}}^{-}$, the 3-point function involving three $\phi^{j}_{0}$
-should be equal to 0. However, we have 
-\begin{align}
-    \vev{\phi^{j}_{0}(z_{1})\phi^{j}_{0}(z_{2})\phi^{j}_{0}(z_{3})} & = \int \mathrm{d} x_{1} \mathrm{d} x_{2} \mathrm{d} x_{3} \, \vev{\phi^{j}_{x_{1}}(z_{1})\phi^{j}_{x_{2}}(z_{2})\phi^{j}_{x_{3}}(z_{3})} \\
-    & = \int \mathrm{d} x_{1} \mathrm{d} x_{2} \mathrm{d} x_{3} \, C^{j_{1},j_{2},j_{3}}(z_{1},z_{2},z_{3}) x_{12}^{j_{1}+j_{2}-j_{3}} x_{23}^{j_{2}+j_{3}-j_{1}} x_{31}^{j_{3}+j_{1}-j_{2}}.   \\
-\end{align}
-There's no constraint on this integral such that the 3-point function should be 0.
+\textcolor{red}{The complex conjugate of $j$ rep. is $-j-1$, which keeps the quadratic Casimir invariant.}
+
 \end{document}
