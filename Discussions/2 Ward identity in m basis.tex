@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}% 设置 book 格式的页边距
+\usepackage{indentfirst} %首行缩进宏包
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} %\bm 命令在数学环境下加粗符号, 可以用于标记矢量
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} % 调整行间距, 推荐 1.5 倍行间距.
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left< #1 \right>}
+
+
+\begin{document}
+\title{Ward identity in m basis}
+\maketitle
+
+\section{Eigen value of $J^{0}_{0}$}
+
+In x-basis, the generators of $\mathfrak{sl}_{2}$ act as differential operators: 
+\begin{equation}
+    \begin{aligned}
+    J^{+}_{0} \phi^{j}_{x} &= D^{j}_{x}(t^{+}) \phi^{j}_{x} = (x^{2} \partial_{x} - 2j x)\phi^{j}_{x}\\
+    J^{0}_{0} \phi^{j}_{x} &= D^{j}_{x}(t^{0}) \phi^{j}_{x} = (x \partial_{x} - j) \phi^{j}_{x}\\
+    J^{-}_{0} \phi^{j}_{x} &= D^{j}_{x}(t^{-}) \phi^{j}_{x} = - \partial_{x} \phi^{j}_{x}
+    \end{aligned}
+\end{equation}
+We can check that these differential operators satisfy the commutation relations, especially:
+\begin{equation}
+    \begin{aligned}
+    \left[D^{j}_{x}(t^{+}),D^{j}_{x}(t^{-})\right] &= \left[ x^{2} \partial_{x} - 2 j x, -\partial_{x} \right]\\
+    &= 2x \partial_{x} - 2 j = 2 D^{j}_{x}(t^{0})
+    \end{aligned}
+\end{equation}
+
+The operator $J^{0}_{0}$ is diagonalized in m-basis, with states labeled by $\ket{j,m}$ and the corresponding field $\phi^{j}_{m}$.
+The transformation between these two bases is
+\begin{equation}
+    \phi^{j}_{m} = \int \mathrm{d} x \, x^{-j-1+m} \phi^{j}_{x}
+\end{equation}
+In m-basis, the action of $\mathfrak{sl}_{2}$ generators is 
+\begin{equation}
+    \begin{aligned}
+    J^{-}_{0} \phi^{j}_{m} &= \int \mathrm{d} x x^{-j-1+m} (- \partial_{x} \phi^{j}_{x})\\
+    &= \int \mathrm{d} x (\partial_{x} x^{-j-1+m}) \phi^{j}_{x}\\
+    &= (-j-1+m) \phi^{j}_{m-1}\\
+    J^{0}_{0} \phi^{j}_{m} &= \int \mathrm{d} x x^{-j-1+m} (x \partial_{x}-j) \phi^{j}_{x}\\
+    &= \int \mathrm{d} x (-\partial_{x} x^{-j+m}) \phi^{j}_{x} -j x^{-j-1+m} \phi^{j}_{x}\\
+    &= (j-m)\phi^{j}_{m} - j \phi^{j}_{m} = \textcolor{red}{-m} \phi^{j}_{m}\\
+    J^{+}_{0} \phi^{j}_{m} &= \int \mathrm{d} x x^{-j-1+m} (x^{2} \partial_{x}-2jx) \phi^{j}_{x}\\
+    &= \int \mathrm{d} x (-\partial_{x} x^{-j+m+1}) \phi^{j}_{x} - 2j x^{-j+m} \phi^{j}_{x}\\
+    &= (-j-1-m) \phi^{j}_{m+1}
+    \end{aligned}
+\end{equation}
+
+The formula for $J^{\pm}_{0}$ matches the formula for ladder operators, except that the total angular momentum is $-j-1$. But this is not 
+a big problem since the Casimir of $j$ and $-j-1$ is the same. However, the eigenvalue of $J^{0}_{0}$ has an additional minus sign.\\
+In fact, we have the following contradictory results:
+\begin{equation}
+    \begin{aligned}
+    J^{0}_{0} \phi^{j}_{m} &= \frac{\left[ J^{+}_{0},J^{-}_{0}\right]}{2} \phi^{j}_{m}\\
+    &= \frac{1}{2}\left( (-j-1+m) J^{+}_{0} \phi^{j}_{m-1} - (-j-1-m) J^{-}_{0} \phi^{j}_{m+1}\right)\\
+    &= \frac{1}{2} \left( (-j-1+m)(-j-1-m+1)-(-j-1-m)(-j-1+m+1) \right) \phi^{j}_{m}\\
+    &= m \phi^{j}_{m}\\
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+    J^{0}_{0} \phi^{j}_{m} &= \frac{\left[ J^{+}_{0},J^{-}_{0}\right]}{2} \phi^{j}_{m}\\
+    &= \frac{1}{2} \int \mathrm{d} x \, x^{-j-1+m} \left((x^{2} \partial_{x} -2 j x)(-\partial_{x}) - (-\partial_{x})(x^{2} \partial_{x} - 2 j x) \right)\phi^{j}_{x}\\
+    &= \frac{1}{2} \int \mathrm{d} x \, \left( -x^{-j+1+m} \partial_{x}^{2} + 2 j x^{-j+m} \partial_{x} \right) \phi^{j}_{x} -(-j-1+m) \left( x^{-j+m} \partial_{x} -2j x^{-j-1+m} \right)\phi^{j}_{x}\\
+    &= \frac{1}{2} \left( -(-j+1+m)(-j+m) - 2 j (-j+m) + (-j-1+m)(-j+m) +(-j-1+m)2j \right) \phi^{j}_{m}\\
+    &= -m \phi^{j}_{m}
+    \end{aligned}
+\end{equation}
+
+\textbf{Remark}\\
+I think the problem is that, when we try to calculate the action of $J^{a}_{0}$ in x-basis, we are actually calculating the complex conjugate:
+\begin{equation}
+    \int \mathrm{d} x \, f(x) D^{a}_{x} \phi^{j}_{x} = \int \mathrm{d} x \, \left(D^{a \dagger}_{x} f(x) \right) \phi^{j}_{x}.
+\end{equation}
+In the folloing text, we should assume the action of $J^{a}_{0}$ on $\phi^{j}_{m}$ as:
+\begin{equation}
+    \left\{
+    \begin{aligned}
+    J^{+}_{0} \phi^{j}_{m} &= (j-m) \phi^{j}_{m+1}\\
+    J^{0}_{0} \phi^{j}_{m} &= m \phi^{j}_{m}\\
+    J^{-}_{0} \phi^{j}_{m} &= (j+m) \phi^{j}_{m-1}.
+    \end{aligned} \label{eq1}
+    \right.
+\end{equation}
+
+
+\section{Ward identity}
+
+The level-1 null vector is 
+\begin{equation}
+    \hat{T}^{c}_{\vev{1,1}} = 2 K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} - t f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - t^{2} J^{c}_{-1},
+\end{equation}
+where the Casimir takes value $C_{2} = \frac{t^{2}}{2} - t = \frac{tk}{2}$. This null vector gives the following ward identity 
+\begin{equation}
+    \vev{T^{c}_{\vev{1,1}} \phi^{j_{\vev{1,1}}}_{m_{1}} \phi^{j_{2}}_{m_{2}} \phi^{j_{3}}_{m_{3}}} = 0.
+\end{equation}
+It gives the following equation:
+\begin{equation}
+    \begin{aligned}
+    0= &\sum_{s=2,3} \frac{1}{z_{s1}} \left\langle 2K_{ab} J^{b(1)}_{0}J^{c(1)}_{0} \phi^{j_{\vev{1,1}}}_{m_{1}} J^{a(2)}_{0} \phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}} \right. \\
+    & \left. -t f^{c}_{ab} J^{b(1)}_{0} \phi^{j_{\vev{1,1}}}_{m_{1}} J^{a(2)}_{0}\phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}} - t^{2} \phi^{j_{\vev{1,1}}}_{m_{1}} J^{c(2)}_{0} \phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}}  \right\rangle
+    \end{aligned}
+\end{equation}
+
+Take $c = 0$, the only two non-zero structure constant is $f^{0}_{-+} = 1, f^{0}_{+-} = -1$. We can set $z_{1,2,3} = 0,1,\infty$. Then 
+the above equation reduces to 
+\begin{equation}\begin{aligned}
+    0= & \left\langle 2 \left(2 J^{0(1)}_{0}J^{0(1)}_{0} J^{0(2)}_{0} + J^{+(1)}_{0}J^{0(1)}_{0} J^{-(2)}_{0} + J^{-(1)}_{0}J^{0(1)}_{0} J^{+(2)}_{0} \right) \phi^{j_{\vev{1,1}}}_{m_{1}} \phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}} \right. \\
+    & \left. -t \left(-1 J^{-(1)}_{0}J^{+(2)}_{0} + J^{+(1)}_{0}J^{-(2)}_{0} \right) \phi^{j_{\vev{1,1}}}_{m_{1}} \phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}} - t^{2} \phi^{j_{\vev{1,1}}}_{m_{1}} J^{0(2)}_{0} \phi^{j_{2}}_{m_{2}}\phi^{j_{3}}_{m_{3}}  \right\rangle
+\end{aligned}\end{equation}
+
+The action of $J^{a}_{0}$ should be the same as \ref{eq1}. We find 
+\begin{equation}
+    \begin{aligned}
+    0= &\left(4 m_{1}^{2} m_{2} -t^{2} m_{2} \right) \vev{m_{1,1}, m_{2},m_{3}}\\
+      & + \left( (j_{\vev{1,1}}+ m_{1})m_{1} (j_{2}-m_{2}) + t (j_{\vev{1,1}} + m_{1})(j_{2} - m_{2}) \right) \vev{m_{1,1}-1,m_{2}+1, m_{3}} \\
+      & + \left( (j_{\vev{1,1}}- m_{1})m_{1} (j_{2}+m_{2}) + t (j_{\vev{1,1}} - m_{1})(j_{2} + m_{2}) \right) \vev{m_{1,1}+1,m_{2}-1, m_{3}}.
+    \end{aligned}
+\end{equation}
+Here we denote $\vev{\phi^{j_{\vev{1,1}}}_{m_{1}} \phi^{j_{2}}_{m_{2}} \phi^{j_{3}}_{m_{3}}}$ as $\vev{m_{1},m_{2},m_{3}}$ for simplicity. 
+If we assume the 3-point function with different sets of $m$ are linearly independent, then the solution to the above equation is given by 
+\begin{equation}
+    m_{1} = \pm \frac{t}{2} = \pm j_{\vev{1,1}}.
+\end{equation}
+
+
+\end{document}
