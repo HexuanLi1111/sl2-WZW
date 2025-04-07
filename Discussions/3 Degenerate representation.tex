@@ -1,0 +1,137 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{indentfirst} 
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} 
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} 
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+
+
+\begin{document}
+\title{Degenerate representation of $\mathfrak{sl}_{2}$ WZW}
+\maketitle
+
+We have found one null vector at level 1: 
+\begin{equation}
+    T^{c}_{1} = 2 K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} - t f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - t^{2} J^{c}_{-1},
+\end{equation}
+where the Casimir takes the value $C_{2} = \frac{t^{2}}{2} - t = \frac{tk}{2}$. It satisfies 
+\begin{equation}
+    J^{a}_{n>0} T^{c}_{1} \ket{j_{1,1},m} = 0.
+\end{equation}
+This null vector gives a degenerate representation of affine $\mathfrak{sl}_{2} $ algebra, where we can build a subrepresentation
+from $T^{a}_{1} \ket{j,m}$. On the other hand, $J^{a}_{-1}\ket{j,m}$ span a basis of level 1 states. We will expand $T^{a}_{1} \ket{j,m}$ in this basis. \\
+
+\section{Null states}
+First, let's define 
+\begin{equation}
+    \boxed{
+        [j,m] \equiv \sqrt{j(j+1)-m(m+1)} = \sqrt{(j-m)(j+m+1)}
+    }
+\end{equation}
+The action of $\mathfrak{sl}_{2}$ generator on state $\ket{j,m}$ is then 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            J^{+}_{0} \ket{j,m} & = [j,m] \ket{j,m+1}\\
+            J^{0}_{0} \ket{j,m} & = m \ket{j,m}\\
+            J^{-}_{0} \ket{j,m} & = [j,m-1] \ket{j,m-1}
+        \end{aligned}
+    \right.
+\end{equation}
+The null vectors are 
+\begin{equation}
+    \begin{aligned}
+        T^{+}_{1} = & 4 J^{0}_{-1} J^{0}_{0} J^{+}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{+}_{0} + 2 J^{-}_{-1} J^{+}_{0} J^{+}_{0} \\
+        & +4j J^{+}_{-1} J^{0}_{0} -4j J^{0}_{-1} J^{+}_{0} - 4 j^2 J^{+}_{-1}\\
+        T^{0}_{1} = & 4 J^{0}_{-1} J^{0}_{0} J^{0}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{0}_{0} + 2 J^{-}_{-1} J^{+}_{0} J^{0}_{0} \\
+        & +2j J^{-}_{-1} J^{+}_{0} -2j J^{+}_{-1} J^{-}_{0} - 4 j^2 J^{0}_{-1}\\
+        T^{-}_{1} = & 4 J^{0}_{-1} J^{0}_{0} J^{-}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{-}_{0} + 2 J^{-}_{-1} J^{+}_{0} J^{-}_{0} \\
+        & +4j J^{0}_{-1} J^{-}_{0} -4j J^{-}_{-1} J^{0}_{0} - 4 j^2 J^{-}_{-1}
+    \end{aligned}
+\end{equation}
+Where for simplicity we have omitted the subscript and write $j$ as $j$. The action of $T^{+}_{1}$ on state $\ket{j,m-1}$ is 
+\begin{equation}
+    \begin{aligned}
+        T^{+}_{1} \ket{j,m-1} = & (2[j,m-1]^{2} + 4 j (m-1) - 4 j^{2}) \, J^{+}_{-1}  \ket{j,m-1} \\
+        & + 4(m-j) [j,m-1] \, J^{0}_{-1}  \ket{j,m} \\
+        & + 2 [j,m] [j,m-1] \, J^{-}_{-1} \ket{j,m+1}\\
+        = &  -2(j-m)(j-m+1) \, J^{+}_{-1} \ket{j,m-1} \\
+        & + 4(m-j) [j,m-1] \, J^{0}_{-1} \ket{j,m} \\
+        & + 2 [j,m] [j,m-1] \, J^{-}_{-1} \ket{j,m+1}\\
+        = & -2(j-m) [j,m-1] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1}  \right)
+    \end{aligned}
+\end{equation}
+Similarly, the action of $T^{0}_{1}$ and $T^{-}_{1}$ is 
+\begin{equation}
+    \begin{aligned}
+        T^{0}_{1} \ket{j,m} = & (2m-2j) [j,m-1] \, J^{+}_{-1}  \ket{j,m-1}\\
+        & + (4 m^2 - 4 j^2) \, J^{0}_{-1}  \ket{j,m}\\
+        & + (2m+2j) [j,m] \, J^{-}_{-1} \ket{j,m+1}\\
+        = & (2 m^2 - 2 j^2) \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1} \right)
+        T^{-}_{1} \ket{j,m+1} = & 2 [j,m] [j,m-1] \, J^{+}_{-1} \ket{j,m-1} \\
+        & + (4m+4j) [j,m] \, J^{0}_{-1} \ket{j,m} \\
+        & + (2[j,m]^2 - 4j (m+1) - 4j^2) \, J^{-}_{-1} \ket{j,m+1}\\
+        = & 2(j+m) [j,m] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1}  \right)
+    \end{aligned}
+\end{equation}
+Hence all these three states are propotional to each other. 
+
+\section{Angular momentum of the subrepresentation}
+The commutation relation of Casimir operator $C_{2} = K_{ab} J^{a}_{0} J^{b}_{0}$ with $J^{a}_{-1}$ is 
+\begin{equation}
+    \begin{aligned}
+        \left[C_{2}, J^{+}_{-1} \right] &= - J^{+}_{-1} J^{-}_{0} - J^{-}_{0} J^{+}_{-1} + J^{+}_{-1} J^{-}_{0} + J^{-}_{0} J^{+}_{-1}\\
+        \left[C_{2}, J^{0}_{-1} \right] &= 2 J^{0}_{0} J^{+}_{-1} + 2 J^{+}_{-1} J^{0}_{0} - 2 J^{+}_{0} J^{0}_{-1} - 2 J^{0}_{-1} J^{+}_{0}\\
+        \left[C_{2}, J^{-}_{-1} \right] &= -2 J^{0}_{0} J^{-}_{-1} -2 J^{-}_{-1} J^{0}_{0} + 2 J^{-}_{0} J^{0}_{-1} + 2 J^{0}_{-1} J^{-}_{0}
+    \end{aligned}
+\end{equation}
+
+The action of $C_{2}$ on basis $J^{a}_{-1} \ket{j,m}$ can be writen as the following matrix:
+\begin{eqnarray}
+    \begin{aligned}
+        C_{2} 
+    \begin{pmatrix}
+    J^{+}_{-1} \ket{j,m-1}\\
+    J^{0}_{-1} \ket{j,m}\\
+    J^{-}_{-1} \ket{j,m+1}
+    \end{pmatrix}
+    = \begin{pmatrix}
+        4m+2j(j+1) & -2 [j,m-1] & 0\\
+        -4 [j,m-1] & 4 + 2j(j+1) & 4[j,m]\\
+        0 & 2 [j,m] & -4m + 2j(j+1)
+    \end{pmatrix}
+    \begin{pmatrix}
+        J^{+}_{-1} \ket{j,m-1}\\
+        J^{0}_{-1} \ket{j,m}\\
+        J^{-}_{-1} \ket{j,m+1}
+    \end{pmatrix}
+    \end{aligned}
+\end{eqnarray}
+After diagonalization, we find the eigenvectors and the corresponding eigenvalues are 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            j+1 &: \quad \frac{[j,m-1]}{m-j-1} J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} + \frac{[j,m]}{m+j+1} J^{-}_{-1} \ket{j,m+1}\\
+            j &: \quad \frac{[j,m-1]}{m} J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} + \frac{[j,m]}{m} J^{-}_{-1} \ket{j,m+1}\\
+            j-1 &: \quad \frac{[j,m-1]}{m+j} J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} + \frac{[j,m]}{m-j} J^{-}_{-1} \ket{j,m+1}
+        \end{aligned}
+    \right.
+\end{equation}
+We find that $T^{a}_{1} \ket{j,m}$ are propotional to the eigenvector of $j-1$. Hence the subrepresentation is of total angular momentum $j_{1,1}-1$.
+
+
+\end{document}
