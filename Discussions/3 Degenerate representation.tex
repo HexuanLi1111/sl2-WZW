@@ -32,7 +32,7 @@ where the Casimir takes the value $C_{2} = \frac{t^{2}}{2} - t = \frac{tk}{2}$. 
 \begin{equation}
     J^{a}_{n>0} T^{c}_{1} \ket{j_{1,1},m} = 0.
 \end{equation}
-This null vector gives a degenerate representation of affine $\mathfrak{sl}_{2} $ algebra, where we can build a subrepresentation
+This null vector gives a degenerate rep. of affine $\mathfrak{sl}_{2} $ algebra, where we can build a subrep.
 from $T^{a}_{1} \ket{j,m}$. On the other hand, $J^{a}_{-1}\ket{j,m}$ span a basis of level 1 states. We will expand $T^{a}_{1} \ket{j,m}$ in this basis. \\
 
 \section{Null states}
@@ -72,7 +72,7 @@ Where for simplicity we have omitted the subscript and write $j$ as $j$. The act
         = &  -2(j-m)(j-m+1) \, J^{+}_{-1} \ket{j,m-1} \\
         & + 4(m-j) [j,m-1] \, J^{0}_{-1} \ket{j,m} \\
         & + 2 [j,m] [j,m-1] \, J^{-}_{-1} \ket{j,m+1}\\
-        = & -2(j-m) [j,m-1] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1}  \right)
+        = & -2(j-m) [j,m-1] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{-1} \ket{j,m-1} + 2 \, J^{0}_{-1} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{-1} \ket{j,m+1}  \right)
     \end{aligned}
 \end{equation}
 Similarly, the action of $T^{0}_{1}$ and $T^{-}_{1}$ is 
@@ -81,16 +81,16 @@ Similarly, the action of $T^{0}_{1}$ and $T^{-}_{1}$ is
         T^{0}_{1} \ket{j,m} = & (2m-2j) [j,m-1] \, J^{+}_{-1}  \ket{j,m-1}\\
         & + (4 m^2 - 4 j^2) \, J^{0}_{-1}  \ket{j,m}\\
         & + (2m+2j) [j,m] \, J^{-}_{-1} \ket{j,m+1}\\
-        = & (2 m^2 - 2 j^2) \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1} \right)
+        = & (2 m^2 - 2 j^2) \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{-1} \ket{j,m-1} + 2 \, J^{0}_{-1} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{-1} \ket{j,m+1} \right)\\
         T^{-}_{1} \ket{j,m+1} = & 2 [j,m] [j,m-1] \, J^{+}_{-1} \ket{j,m-1} \\
         & + (4m+4j) [j,m] \, J^{0}_{-1} \ket{j,m} \\
         & + (2[j,m]^2 - 4j (m+1) - 4j^2) \, J^{-}_{-1} \ket{j,m+1}\\
-        = & 2(j+m) [j,m] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{0} \ket{j,m-1} + 2 \, J^{0}_{0} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{0} \ket{j,m+1}  \right)
+        = & 2(j+m) [j,m] \left( \sqrt{\frac{j-m+1}{j+m}} \, J^{+}_{-1} \ket{j,m-1} + 2 \, J^{0}_{-1} \ket{j,m} - \sqrt{\frac{j+m-1}{j-m}} \, J^{-}_{-1} \ket{j,m+1}  \right)
     \end{aligned}
 \end{equation}
 Hence all these three states are propotional to each other. 
 
-\section{Angular momentum of the subrepresentation}
+\section{Angular momentum of the subrep.}
 The commutation relation of Casimir operator $C_{2} = K_{ab} J^{a}_{0} J^{b}_{0}$ with $J^{a}_{-1}$ is 
 \begin{equation}
     \begin{aligned}
@@ -131,7 +131,16 @@ After diagonalization, we find the eigenvectors and the corresponding eigenvalue
         \end{aligned}
     \right.
 \end{equation}
-We find that $T^{a}_{1} \ket{j,m}$ are propotional to the eigenvector of $j-1$. Hence the subrepresentation is of total angular momentum $j_{1,1}-1$.
+We find that $T^{a}_{1} \ket{j,m}$ are propotional to the eigenvector of $j-1$. Hence the subrep. is of total angular momentum $j_{1,1}-1$.\\
+If the horizontal representation is a D series representation with $j$, then the subrepresentation is also a D series representation
+ with angular momentum $j-1$. Given the state $\ket{j,j}$, we find 
+
+\begin{equation}
+    \begin{aligned}
+        T^{+}_{1} \ket{j,j} &= 0 \\
+        T^{+}_{1} \ket{j,j-1} &= T^{0}_{1} \ket{j,j} = 0.
+    \end{aligned}
+\end{equation}
 
 
 \end{document}
