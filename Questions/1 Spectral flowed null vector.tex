@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{indentfirst} 
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} 
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} 
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+
+
+\begin{document}
+\title{Spectral flowed null vector}
+\maketitle
+
+In case of conformal highest weight representation, the inner product of the null state $\hat{N}^{a}_{-1}\ket{V_{\vev{1,1}}}$, 
+with descendent state $J^{b}_{-n} \ket{j,m}$ is 0:
+\begin{equation}
+    \left(J^{b}_{-n} \ket{j,m}\right)^{\dagger} \hat{N}^{a}_{-1}\ket{V_{\vev{1,1}}} = \left\langle j,m \left| \left(J^{b}_{-n}\right)^{\dagger} \hat{N}^{a}_{-1} \right| V_{\vev{r,s}}  \right\rangle = 0.
+\end{equation}
+However, when considering spectral flow, the inner product of $\rho_{\omega} (\hat{N}^{a}_{-1}\ket{V_{\vev{1,1}}})$ with $J^{b}_{-n} \ket{j,m}$ 
+is not necessarily 0:
+\begin{equation}
+    \left\langle j,m \left|  \left(J^{b}_{-n}\right)^{\dagger} \rho_{\omega}\left(\hat{N}^{a}_{-1} \right| V_{\vev{r,s}}  \right\rangle \right) \neq 0.
+\end{equation}
+For example, 
+\begin{equation}
+    \left\langle j,m \left|  J^{+}_{1} \rho_{1}\left(\hat{N}^{a}_{-1} \right| V_{\vev{r,s}}  \right\rangle \right) = \left\langle j,m \left| \rho_{1}\left(J^{+}_{0} \hat{N}^{a}_{-1} \right| V_{\vev{r,s}}  \right\rangle \right) \neq 0
+\end{equation}
+
+In that case, does the null vector equation $\vev{\hat{N}^{a}_{-1} V_{\vev{1,1}} V_{2} V_{3}} = 0$ still hold to be true? 
+
+\end{document}
