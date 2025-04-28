@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-### CFT notes
+### Questions
 
-### Discussions
-
-### Thesis
+### Report

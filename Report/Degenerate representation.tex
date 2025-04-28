@@ -1,0 +1,224 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{indentfirst} 
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm} 
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5} 
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+
+
+\begin{document}
+\title{Degenerate representation of $\mathfrak{sl}_{2}$ WZW}
+\maketitle
+
+\section{Affine Symmetry}
+\subsection{Symmetry algebra}
+The $G$ Wess-Zumino-Witten model is a conformal field theory with a $\hat{\mathfrak{g}}$ symmetry algebra. We define a number dim$\mathfrak{g}$ of 
+holomorphic $\hat{\mathfrak{g}}$ currents $J^{a}(z)$ through their OPEs,
+\begin{equation}
+    \boxed{
+        J^{a}(z)J^{b}(w) = \frac{kK^{ab}}{(z-w)^{2}} + \frac{f^{ab}_{c} J^{c}(w)}{z-w} + \mathcal{O}(1), \label{OPE}
+        }
+\end{equation}
+where the constant $k$ is called the level, $f^{ab}_{c}$ are the structure constants of Lie algebra $\mathfrak{g}$ and 
+$K^{ab} = \frac{1}{2g} f^{ac}_{d}f^{bd}_{c}$ is the Killing form. Here $g$ is the dual Coxeter number of $\mathfrak{g}$. In the case of 
+$\mathfrak{sl}_{2}$, $g = 2$.\\
+\par The modes of the current are defined by 
+\begin{equation}
+    J^{a}_{n} = \oint \mathrm{d}z \, z^{n} J^{a}(z).
+\end{equation}
+From the OPEs \eqref{OPE}, we deduce the following commutation relations
+\begin{equation}
+    \left[ J^{a}_{m}, J^{b}_{n} \right] = f^{ab}_{c} J^{c}_{m+n} + m k K^{ab} \delta_{m+n,0}. \label{CR1}
+\end{equation}
+We introduce the Sugawara construction for the the energy momentum tensor $T(z)$
+\begin{equation}
+    \boxed{T(z) = \frac{K_{ab} : J^{a}(z) J^{b}(z) : }{2(k+g)}.} \label{EM}
+\end{equation}
+$T$ is a Virasoro field of central charge $c = \frac{k \mathrm{dim} \mathfrak{g}}{k+g}$. The corresponding Virasoro generators are given by
+\begin{equation}
+    L_{n} = \frac{K_{ab}}{2(k+g)} : \sum_{m \in \mathbb{Z} } J^{a}_{n-m} J^{b}_{m} :.
+\end{equation}
+Using the commutation relations for the $J^{a}_{n}$ \eqref{CR1}, we can deduce commutation relation between $L_{m}$ and $J^{a}_{n}$:
+\begin{equation}
+    \left[ L_{m}, J^{a}_{n} \right] = -n J^{a}_{m+n}. \label{CR2}
+\end{equation}
+
+\subsection{Irreducible representations of \texorpdfstring{$\mathfrak{sl}_{2}$}{Lg}}
+For simplicity, we will work in the m-basis, where the Casimir operator $C=K_{ab}J^{a}_{0}J^{b}_{0}$ and $J^{0}_{0}$ are diagonalized. 
+A state is labeled as $\ket{j,m}$. The eigenvalue of the Casimir operator is $2j(j+1)$.\\
+\par The action of $\mathfrak{sl}_{2}$ generators on state $\ket{j,m}$ is 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            J^{+}_{0} \ket{j,m} & = (j-m) \ket{j,m+1}\\
+            J^{0}_{0} \ket{j,m} & = m \ket{j,m}\\
+            J^{-}_{0} \ket{j,m} & = (j+m) \ket{j,m-1}
+        \end{aligned}
+    \right.
+\end{equation}
+Especially we find 
+\begin{equation}
+    J^{\pm}_{0} \ket{j,\pm j} = 0.
+\end{equation}
+Hence we can classify irreps by the existence of highest/lowest weight states $\ket{j,\pm j}$\cite{ribault2022conformalfieldtheoryplane}. The principle series representations
+$\mathcal{C}^{j}_{\alpha}$ contain neither of these two, while the discrete series representations $\mathcal{D}^{j,\pm}$ contain
+$\ket{j,\mp j}$ respectively. The finite-dimensional representations contain both of these two states. The eigenvalues of $J^{0}_{0}$ in these 
+representations are listed below:
+
+\begin{center}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        Representations&Parameter values&Eigenvalues of $J^{0}_{0}$\\
+        \hline
+        $\mathcal{C}^{j}_{\alpha}$ & $j \in -\frac{1}{2} + i \mathbb{R} $, $\alpha \in \mathbb{R}$ mod $\mathbb{Z}$& $\alpha + \mathbb{Z}$\\
+        $\mathcal{D}^{j,+}$ & $j \in (-\infty,-\frac{1}{2}) $& $-j + \mathbb{N}$\\
+        $\mathcal{D}^{j,-}$ & $j \in (-\infty,-\frac{1}{2}) $& $j - \mathbb{N}$\\
+        \hline
+    \end{tabular}
+\end{center}
+
+
+
+\section{Degenerate Representations of \texorpdfstring{$\widehat{\mathfrak{sl}_{2}}$}{Lg}}
+The $\widehat{\mathfrak{sl}_{2}}$ degenerate representations can be derived from the KZ-BPZ relation. The degenerate representations $V^{\vev{r,s}}$
+ are labeled by two integer $r$ and $s$, which has spin
+\begin{equation}
+    j_{\vev{r,s}} = \frac{s-1}{2} - \frac{k+2}{2} r \quad \mathrm{for} \quad s\geq 1, r \geq 0,
+\end{equation}
+and contains null vectors of level $N=rs$.
+\subsection{Level 1 null vector}
+The only possibility to have a level 1 null vector is $r = s = 1$. The corresponding null vector is given by \cite{stocco2022torusonepointblock2d}:
+\begin{equation}
+    \hat{N}^{c}_{-1} = K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} + j_{1,1} f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - 2 j^{2}_{1,1} J^{c}_{-1}. \label{NV}
+\end{equation}
+The set of states $\left\{ \hat{N}^{a}_{-1} \ket{j,m} \right\}$ forms a subrepresentation of the degenerate representation.\\
+\par The commutation relations of $J^{a}_{0}$ and $J^{a}_{1}$ with null vector $\hat{N}^{c}_{-1}$ are:
+\begin{equation}
+    \begin{aligned}
+        \left[ J^{a}_{0}, \hat{N}^{c}_{-1} \right] 
+        =& K_{db} \left[J^{a}_{0}, J^{d}_{-1}J^{b}_{0}J^{c}_{0} \right] + 
+            j_{1,1}f^{c}_{db}\left[J^{a}_{0},J^{d}_{-1}J^{b}_{0}\right] - 2 j^{2}_{1,1} \left[J^{a}_{0},J^{c}_{-1}\right]\\
+        =& K_{db} \left(f^{ad}_{e}J^{e}_{-1}J^{b}_{0}J^{c}_{0} + f^{ab}_{e}J^{d}_{-1}J^{e}_{0}J^{c}_{0} + f^{ac}_{e}J^{d}_{-1}J^{b}_{0}J^{e}_{0}\right)\\
+            &+ j_{1,1}f^{c}_{db} \left( f^{ad}_{e} J^{e}_{-1}J^{b}_{0} + f^{ab}_{e} J^{d}_{-1} J^{e}_{0} \right)\\
+            &-2 j^{2}_{1,1} f^{ac}_{e} J^{e}_{-1}\\
+        =& f^{ac}_{e} \hat{N}^{e}_{-1}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \left[ J^{a}_{1}, \hat{N}^{c}_{-1} \right] 
+        =& K_{db} \left[J^{a}_{1}, J^{d}_{-1}J^{b}_{0}J^{c}_{0} \right] + 
+            j_{1,1}f^{c}_{db}\left[J^{a}_{1},J^{d}_{-1}J^{b}_{0}\right] - 2 j^{2}_{1,1} \left[J^{a}_{1},J^{c}_{-1}\right]\\
+        =& K_{db} \left(f^{ad}_{e}J^{e}_{0}J^{b}_{0}J^{c}_{0} + f^{ab}_{e}J^{d}_{-1}J^{e}_{1}J^{c}_{0} + f^{ac}_{e}J^{d}_{-1}J^{b}_{0}J^{e}_{1}\right) + k K_{db}K^{ad}J^{b}_{0}J^{c}_{0}\\
+            &+ j_{1,1}f^{c}_{db} \left( f^{ad}_{e} J^{e}_{0}J^{b}_{0} + f^{ab}_{e} J^{d}_{-1} J^{e}_{1} \right) + kj_{1,1}f^{c}_{db}K^{ad}J^{b}_{0}\\
+            &-2 j^{2}_{1,1} f^{ac}_{e} J^{e}_{0}-2 k j^{2}_{1,1}K^{ac}\\
+        =& (2+k+2j_{1,1})J^{a}J^{c}_{0} + (2j_{1,1} + kj_{1,1}+2j^{2}_{1,1})f^{ca}_{e} - K^{ac}j_{1,1}(K_{eb}J^{e}_{0}J^{b}_{0}-2k j_{1,1})\\
+            &+ K_{db}\left(f^{ab}_{e}J^{d}_{-1}J^{c}_{0} + f^{ac}_{e}J^{d}_{-1}J^{b}_{0} \right)J^{e}_{1}
+             + \left(K_{db}f^{ab}_{h}f^{hc}_{e} + j_{1,1}f^{c}_{db}f^{ab}_{e}\right)J^{d}_{-1}J^{e}_{1}
+    \end{aligned}
+\end{equation}
+Hence 
+\begin{equation}
+    J^{a}_{1} \hat{N}^{c}_{-1} \ket{j,m} = 0.
+\end{equation}
+\subsection{Subrepresentation}
+The states $\hat{N}^{+}_{-1}\ket{j,m-1}$, $\hat{N}^{0}_{-1}\ket{j,m}$, and $\hat{N}^{-}_{-1} \ket{j,m+1}$ 
+all have the same $J^{0}_{0}$ eigenvalue, namely $m$. Since the subrepresentation generated by the null vector is 
+expected to be irreducible, these states should be linearly dependent. These states can be expanded in the basis of 
+$J^{a}_{-1}\ket{j_{1,1},m}$. For simplicity, we omit the subscript and write $j$ for $j_{1,1}$.
+\begin{equation}
+    \begin{aligned}
+        \hat{N}^{+}_{-1} \ket{j,m-1} = & ((j-m+1)(j+m) +2 j (m-1) -2 j^2) \, J^{+}_{-1}  \ket{j,m-1} \\
+        & + (2(j-m+1)m-2j(j-m+1)) \, J^{0}_{-1}  \ket{j,m} \\
+        & + (j-m+1)(j-m) \, J^{-}_{-1} \ket{j,m+1}\\
+        = & (m-j)(j-m+1)\left( J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} - J^{-1}_{-1} \ket{j,m+1} \right)\\
+        \equiv  & -(j-m)(j-m+1) N_{-1} \ket{j,m}
+    \end{aligned}
+\end{equation}
+Similarly, the other two states are 
+\begin{equation}
+    \begin{aligned}
+        \hat{N}^{0}_{-1} \ket{j,m} = & (m(j+m) - j (j+m) ) \, J^{+}_{-1}  \ket{j,m-1} \\
+        & + (2m^2 - 2j^2) \, J^{0}_{-1}  \ket{j,m} \\
+        & + (m(j-m)+2(j-m)) \, J^{-}_{-1} \ket{j,m+1}\\
+        = & (m-j)(m+j)\left( J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} - J^{-1}_{-1} \ket{j,m+1} \right)\\
+        = & -(j-m)(m+j) N_{-1} \ket{j,m}
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        \hat{N}^{-}_{-1} \ket{j,m+1} = & (j+m+1)(j+m) \, J^{+}_{-1}  \ket{j,m-1} \\
+        & + ((j+m+1)m+2j(j+m+1)) \, J^{0}_{-1}  \ket{j,m} \\
+        & + ((j+m+1)(j-m)-2j(m+1)-2j^{2}) \, J^{-}_{-1} \ket{j,m+1}\\
+        = & (j+m)(j+m+1)\left( J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} - J^{-1}_{-1} \ket{j,m+1} \right)\\
+        = & (j+m)(j+m+1) N_{-1} \ket{j,m}
+    \end{aligned}
+\end{equation}
+Hence all these three states are propotional to each other. 
+\par To find the spin of the subrepresentation, we first calculate the eigenstates of the Casimir operator.
+The commutation relation of Casimir operator $C = K_{ab} J^{a}_{0} J^{b}_{0}$ with $J^{c}_{-1}$ is 
+\begin{equation}
+    \begin{aligned}
+        \left[C,J^{c}_{-1}\right] = & K_{ab}\left[J^{a}_{0}J^{b}_{0},J^{c}_{-1}\right]\\
+        =& K_{ab}f^{ac}_{d}J^{d}_{-1}J^{b}_{0} + K_{ab}f^{bc}_{d}J^{a}_{0}J^{d}_{-1}\\
+        =& -f^{c}_{bd} J^{d}_{-1}J^{b}_{0} - f^{c}_{bd}J^{b}_{0}J^{d}_{-1}
+    \end{aligned}
+\end{equation}
+The action of $C_{2}$ on basis $J^{a}_{-1} \ket{j,m}$ can be writen as the following matrix:
+\begin{eqnarray}
+    \begin{aligned}
+        C_{2} 
+    \begin{pmatrix}
+    J^{+}_{-1} \ket{j,m-1}\\
+    J^{0}_{-1} \ket{j,m}\\
+    J^{-}_{-1} \ket{j,m+1}
+    \end{pmatrix}
+    = \begin{pmatrix}
+        4m+2j(j+1) & -2 (j+m) & 0\\
+         -4 (j-m+1) & 4 + 2j(j+1) & 4(j+m+1)\\
+        0 & 2 (j-m)& -4m + 2j(j+1)
+    \end{pmatrix}
+    \begin{pmatrix}
+        J^{+}_{-1} \ket{j,m-1}\\
+        J^{0}_{-1} \ket{j,m}\\
+        J^{-}_{-1} \ket{j,m+1}
+    \end{pmatrix}
+    \end{aligned}
+\end{eqnarray}
+After diagonalization, we find the eigenvectors and the corresponding eigenvalues are 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            j+1 &: -\frac{j+m}{j-m+1} J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} + \frac{j-m}{j+m+1} J^{-}_{-1} \ket{j,m+1}\\
+            j &: \frac{j+m}{m} J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} + \frac{j-m}{m} J^{-}_{-1} \ket{j,m+1}\\
+            j-1 &: J^{+}_{-1} \ket{j,m-1} + 2 J^{0}_{-1} \ket{j,m} - J^{-}_{-1} \ket{j,m+1}
+        \end{aligned}
+    \right.
+\end{equation}
+This is analogous to the tensor product of irreps of $\mathfrak{sl}_{2}$
+\begin{equation}
+    \mathrm{Adj} \otimes R_{j} = R_{j-1} \oplus R_{j} \oplus R_{j-1}.
+\end{equation}
+We find that $N_{-1}\ket{j,m}$ is exactly the eigenvector corresponding to $j-1$. Hence the subrepresentation has spin $j_{1,1}-1 = j_{1,-1}$.
+
+\bibliographystyle{plain}
+\bibliography{degrep}
+
+\end{document}
