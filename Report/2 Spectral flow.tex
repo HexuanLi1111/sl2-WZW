@@ -1,0 +1,264 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}   
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath} 
+\usepackage{tikz}
+
+\usepackage[
+    backend=biber,      
+    style=numeric-comp, 
+    sorting=none        
+]{biblatex}
+\addbibresource{references.bib} 
+\usepackage{hyperref}
+
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5}
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+
+\begin{document}
+\title{Fusion rule and spectrally flowed degenerate representations}
+\maketitle
+\tableofcontents
+
+\section{Fusion rules}
+We single out the contribution of a primary field $\phi^{j}_{x}$ and it's descendents in the OPE between two primary fields:
+\begin{equation}
+    \phi^{j_{1}}_{x_{1}} (z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) \supset \sum_{J \in \mathcal{J}} C^{j,J}_{j_{1},j_{2}}(z_{1},z_{2}) D \left[\begin{array}{ccc}
+-j_3 -1 & j_2 & j_1 \\
+x_3 & x_2 & x_1
+\end{array} \right] J \phi^{j}_{x}(z_{2}),
+\end{equation}
+where $\mathcal{J}$ is the set of creation operators. In x-basis, the 3-point function is propotional to 
+\begin{equation}
+    D \left[\begin{array}{ccc}
+j_3  & j_2 & j_1 \\
+x_3 & x_2 & x_1
+\end{array} \right] = x_{12}^{j_{12}^{3}} x_{23}^{j_{23}^{1}} x_{31}^{j_{31}^{2}}.
+\end{equation}
+On both sides of the OPE, we insert 
+$\oint_{z_{1},z_{2}} dy \left(y-z_{2}\right)^{m} J^{a}(y)$, where the integration contour encloses both $z_{1}$ and $z_{2}$. Use the OPE
+between current operator $J^{a}(y)$ and primary field, we find 
+\begin{equation}
+    \left( J^{a,(z_{2})}_{m} + z_{12}^{m} D^{j_{1}}_{x_{1}} \right) \phi^{j_{1}}_{x_{1}} (z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) 
+    \supset C^{j,J}_{j_{1},j_{2}}(z_{1},z_{2}) D \left[\begin{array}{ccc}
+-j_3 -1 & j_2 & j_1 \\
+x_3 & x_2 & x_1
+\end{array} \right] J^{a}_{m} J \phi^{j}_{x}(z_{2})
+\end{equation}
+The vanishing of null vector $\hat{N}^{0}_{1,1} \phi^{1,1}_{x} = 0$ gives the following equation:
+\begin{equation}
+    \begin{aligned}
+        \phi^{j_{2}}_{x_[2]} \hat{N}^{0}_{1,1} \phi^{1,1}_{x_{1}} \supset & \left( \frac{1}{z_{21}} K_{a b} D_{x_1}\left(t^0\right) D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right)+ \frac{1}{z_{21}}j_{1,1} f_{a b}^0 D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right) \right.\\
+    & \left.- \frac{2}{z_{12}} j_{1,1}^2 D_{x_s}\left(t^0\right) + \hat{N}^{0}_{1,1} \right) C^{j,J}_{j_{1},j_{2}}(z_{1},z_{2})
+    D \left[\begin{array}{ccc}
+    -j_3 -1 & j_2 & j_1 \\
+    x_3 & x_2 & x_1
+    \end{array} \right] J \phi^{j}_{x}(z_{2})
+    = 0.
+    \end{aligned}
+\end{equation}
+The contribution of primary fields should vanish.This amounts to a differential equation of the 3-point function.
+\begin{equation}
+    \left( K_{a b} D_{x_1}\left(t^0\right) D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right)+ \frac{1}{z_{21}}j_{1,1} f_{a b}^0 D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right) 
+    - \frac{2}{z_{12}} j_{1,1}^2 D_{x_s}\left(t^0\right) \right) D \left[\begin{array}{ccc}
+    -j_3 -1 & j_2 & j_1 \\
+    x_3 & x_2 & x_1
+    \end{array} \right] = 0.
+\end{equation}
+The solution gives us the fusion rule \cite{Stocco:2022gah}:
+\begin{equation}
+    \hat{\mathcal{R}}^{1,1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j+j_{1,1}} + \hat{\mathcal{R}}^{j-j_{1,1}}.
+\end{equation}
+Remark: We will not reduce the complexity by using the OPE Ward identities, since eventually we have to deal with the same differential function 
+of 3-point functions.
+
+\section{Spectral Flow}
+\subsection{Definition}
+The $\widehat{\mathfrak{sl}_{2}}$ algebra has a family of automorphisms $\rho_{n} , n \in \mathbb{Z}$, called spectral flow. They
+are defined by 
+\begin{equation}
+    \begin{aligned}
+        \rho_{n}(J^{\pm}_{m}) & = J^{\pm}_{m \pm n},\\
+        \rho_{n}(J^{0}_{m}) & = J^{0}_{m} + k n \delta_{m,0}.
+    \end{aligned}
+\end{equation}
+According to the Sugawara constraction, their action on Virasoro generators are given by 
+\begin{equation}
+    \rho_{n}(L_{m}) = L_{m} + n J^{0}_{m} + \frac{1}{4} k n^{2} \delta_{m,0}. \label{SpecFlowVira}
+\end{equation}
+The spectral flows satisfy
+\begin{equation}
+    \rho_{n_{1}} \circ \rho_{n_{2}} = \rho_{n_{1} + n_{2}}.
+\end{equation}
+Given a representation $\hat{\mathcal{R}} $ of $\widehat{\mathfrak{sl}_{2}}$ on vector spece $V$, a spectrally flowed representation 
+$\rho_{n} \left(\hat{\mathcal{R}} \right)$ is defined on vector space
+\begin{equation}
+    V' = \left\{ \rho_{n}(\ket{v}) |\, \ket{v} \in V \right\}
+\end{equation}
+The action of $\widehat{\mathfrak{sl}_{2}}$ generators on spectrally flowed representations is 
+\begin{equation}
+    J^{a}_{m} \rho_{n} \left( \ket{v} \right) = \rho_{n}\left( \rho_{-n} \left(J^{a}_{m} \right) \ket{v} \right).
+\end{equation}
+The conjugate representation of $\rho_{n} \left(\hat{\mathcal{R}} \right)$ is 
+\begin{equation}
+    \rho_{n} \left( \hat{\mathcal{R}} \right)^{*} = \rho_{-n} \left(\hat{\mathcal{R}}^{*} \right)
+\end{equation}
+In addition, it's believed that the spectral flow commutes with fusion \cite{Gaberdiel:2001ny}, 
+\begin{equation}
+    \rho_{n} \left(\hat{\mathcal{R}}\right) \times \rho_{m} \left(\mathcal{R'}\right) = \rho_{n+m} \left(\hat{\mathcal{R}}\times \mathcal{R'}\right). \label{SpecFus}
+\end{equation}
+
+
+\subsection{Spectrally flowed representations}
+We introduce the following notation 
+\begin{equation}
+    \begin{aligned}
+        \hat{\mathcal{C}}^{j,n} &= \rho_{n} \left( \hat{\mathcal{C}}^{j} \right),\\
+        \hat{\mathcal{D}}^{j, \frac{1}{2} + n} &= \rho_{n} \left( \hat{\mathcal{D}}^{j, +} \right).
+    \end{aligned}
+\end{equation}
+From \ref{SpecFlowVira}, we find the eigenvalues of $L_{0}$ in $\hat{\mathcal{C}}^{j,n}$ of non-zero $n$ are not bounded from below. Hence 
+it cannot be an affine highest-weight representation.\\
+\par On the other hand, the representations $\hat{\mathcal{D}}^{j,\pm}$ are characterized by the existence of state $\ket{j,\mp j}$, 
+which satisfy the following conditions:
+\begin{equation}
+    J^{a}_{n>0} \ket{j,\pm j} = J^{\pm}_{0} \ket{j,\pm j} = (J^{0}_{0} \mp j) \ket{j,\pm j} =0.
+\end{equation}
+In particular, we notice that 
+\begin{equation}
+    \begin{aligned}
+        J^{+}_{n \geq 0} \rho_{-1}(\ket{j,-j}) &= \rho_{-1} \left( J^{+}_{n+1} \ket{j,-j} \right)  = 0 \\
+        J^{0}_{n > 0} \rho_{-1}(\ket{j,-j}) & =  (J^{0}_{0} - \frac{k}{2} +j)\rho_{-1}\left(\ket{j,-j}\right) = 0\\
+        J^{-}_{n>0} \rho_{-1}(\ket{j,-j}) &= \rho_{-1} \left( J^{-}_{n-1} \ket{j,-j} \right)  =  0.
+    \end{aligned}
+\end{equation}
+Hence we find $\rho_{-1} (\ket{j,-j}) = \ket{\frac{k}{2}-j, \frac{k}{2}-j}$, and hence 
+\begin{equation}
+    \hat{\mathcal{D}}^{j,-\frac{1}{2}} = \rho_{-1} \left( \hat{\mathcal{D}}^{j,+} \right) = \hat{\mathcal{D}}^{\frac{k}{2}-j,-}.
+\end{equation}
+If we take $j = j_{r,s} = \frac{s-1}{2} - \frac{k+2}{2} r$, we find 
+\begin{equation}
+    \frac{k}{2} - j_{r,s} = \frac{-s-1}{2} - \frac{k+2}{2} (-r-1) = j_{-r-1,-s}. \label{SpecDegSpin}
+\end{equation}
+And since $j_{-r,-s} = -1 - j_{r,s}$, if we apply $\rho_{\mp 1}$ on degenerate representation $\hat{\mathcal{D}}^{\vev{r,s},\pm}$, 
+we should again obtain another degenerate representation $\hat{\mathcal{D}}^{\vev{-r-1,-s},\mp}$.
+
+\subsection{Spectrally flowed vacuum representation}
+Now we consider the spectral flow of the vacuum representation, i.e. the degenerate representation $\hat{\mathcal{E}}^{1}$.
+On one hand, the fusion between any representation $\hat{\mathcal{R}}^{j}$ with the vacuum representation should give 
+$\hat{\mathcal{R}}^{j}$ back: 
+\begin{equation}
+    \hat{\mathcal{E}}^{1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j}.
+\end{equation}
+Hence from our assumption \ref{SpecFus}, we find 
+\begin{equation}
+    \rho_{n} \left( \hat{\mathcal{E}}^{1} \right) \times \hat{\mathcal{R}}^{j} = \rho_{n} \left( \hat{\mathcal{R}}^{j} \right).
+\end{equation}
+On the other hand, one could view $\hat{\mathcal{E}}^{0,1}$ as
+\begin{equation}
+    \hat{\mathcal{E}}^{0,1} = \hat{\mathcal{D}}^{\vev{0,1},+} \cap \hat{\mathcal{D}}^{\vev{0,1},-}
+\end{equation}
+which implies the following relation: 
+\begin{equation}
+    \begin{aligned}
+        \rho_{1} \left(\hat{\mathcal{E}}^{0,1}\right) &= \hat{\mathcal{D}}^{\vev{-1,-1},+}\\
+        \rho_{-1} \left(\hat{\mathcal{E}}^{0,1}\right) &= \hat{\mathcal{D}}^{\vev{-1,-1},-}.
+    \end{aligned}
+\end{equation}
+This can be verified by the following equations:
+\begin{equation}
+    \begin{aligned}
+        J^{+}_{1} \rho_{-1}\left( \ket{0,0} \right) &= \rho_{-1} \left( J^{+}_{2} \ket{0,0} \right) = 0 \\
+        J^{-}_{1} \rho_{-1}\left( \ket{0,0} \right) &= \rho_{-1} \left( J^{-}_{0} \ket{0,0} \right) = 0 \\
+        J^{0}_{1} \rho_{-1}\left( \ket{0,0} \right) &= \rho_{-1} \left( J^{0}_{1} \ket{0,0} \right) = 0 \\
+        J^{+}_{0} \rho_{-1}(\ket{0,0}) &= \rho_{-1} \left( J^{+}_{1} \ket{0,0} \right) = 0\\
+        J^{0}_{0} \rho_{-1}\left( \ket{0,0} \right) &= \rho_{-1} \left( \left( J^{0}_{0} + \frac{k}{2} \right) \ket{0,0} \right) = \frac{k}{2} \rho_{-1}\left( \ket{0,0} \right)
+    \end{aligned}
+\end{equation}
+We find 
+\begin{equation}
+    \rho_{-1} \left( \ket{0,0} \right) = \ket{\frac{k}{2}, \frac{k}{2}}.
+\end{equation}
+Hence we have the following fusion rules:
+\begin{equation}
+    \hat{\mathcal{D}}^{\vev{-1,-1},\pm} \times \hat{\mathcal{R}}^{j} = \rho_{\pm} \left( \hat{\mathcal{R}}^{j} \right).
+\end{equation}
+
+\subsection{\texorpdfstring{$j_{-1,-1}$}{Lg} representations}
+Any affine highest representation with spin $j_{-1,-1} = \frac{k}{2}$ is a degenerate representation with level $-1 \times -1 = 1$ null states. The 
+corresponding null vector can be obtained by solving the following equations:
+\begin{equation}
+    J^{a}_{1} \left( a_{+} J^{+}_{-1} J^{-}_{0} + a_{0} J^{0}_{-1} + a_{-} J^{-}_{-1} J^{+}_{0} \right) \ket{j_{-1,-1},m} = 0.
+\end{equation}
+We find null state to be 
+\begin{equation}
+    \left(-\frac{1}{j_{-1,-1} -m + 1} J^{+}_{-1} J^{-}_{0} + 2 J^{0}_{-1} + \frac{1}{j_{-1,-1} + m +1} J^{-}_{-1} J^{+}_{0} \right) \ket{j_{-1,-1},m}
+\end{equation}
+The null state is of spin $j_{-1,-1} + 1$. We may compare the degenerate representations with $j_{1,1}$ and $j_{-1,-1}$:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        $j_{1,1} = -\frac{k+2}{2}$ & $j_{-1,-1} = \frac{k}{2} = -j_{1,1}-1$\\
+        \hline
+        $\hat{N}^{a}_{1,1} \ket{j_{1,1},m} \in \hat{\mathcal{R}}^{j_{1,1}-1}$ & $\hat{N}^{a}_{-1,-1} \ket{j_{-1,-1},m} \in \hat{\mathcal{R}}^{j_{-1,-1}}$\\
+        \hline
+        - & $\hat{\mathcal{D}}^{\vev{-1,-1},\pm} = \rho_{\pm 1}\left( \hat{\mathcal{E}}^{1} \right)$\\
+        \hline
+    \end{tabular}
+\end{center}
+
+It also implies there should be continuous series representation with $j_{-1,-1}$, whose fusion rules are still unknown. 
+One conjecture is that the fusion gives a continuous transformation from 
+$\rho_{-1}(\hat{\mathcal{R}}^{j})$ to $\rho_{1}(\hat{\mathcal{R}}^{j})$:
+
+\begin{center}
+    \begin{tabular}{|c|l|l|l|}
+        \hline
+        Representations&$\hat{\mathcal{D}}^{\vev{-1,-1},+}$&$\hat{\mathcal{C}}^{\vev{-1,-1}}_{\alpha}$&$\hat{\mathcal{D}}^{\vev{-1,-1},-}$\\
+        \hline
+        $m$ & $-j_{-1,-1} + \mathbb{N}$ & $\alpha + \mathbb{Z} $ & $j_{-1,-1} - \mathbb{N}$\\
+        \hline
+        $\times \hat{\mathcal{R}}^{j}$&$\rho_{1}\left( \hat{\mathcal{R}}^{j} \right)$ & ? & $\rho_{-1}\left( \hat{\mathcal{R}}^{j} \right)$\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Spectrally flowed degenerate representations}
+We try to list all degenerate representations, including both affine highest-weight and non-highest-weight:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Spectral flow &$\rho_{-1}$&$\rho_{1}$&$\rho_{n}, |n|>1$\\
+        \hline
+        $\hat{\mathcal{C}}^{\vev{r,s}}_{\alpha} $ & - & - & -\\
+        \hline
+        $\hat{\mathcal{C}}^{\vev{-r,-s}}_{\alpha} $ & - & - & -\\
+        \hline
+        $\hat{\mathcal{D}}^{\vev{r,s},+} $ & $\hat{\mathcal{D}}^{\vev{-r-1,-s},-} $ & - & -\\
+        \hline
+        $\hat{\mathcal{D}}^{\vev{r,s},-} $ &- & $\hat{\mathcal{D}}^{\vev{-r-1,-s},+} $ & - \\
+        \hline
+        $\hat{\mathcal{E}}^{s} $& $\hat{\mathcal{D}}^{\vev{-1,-s},-} $ & $\hat{\mathcal{D}}^{\vev{-1,-s},+} $& -\\
+        \hline
+    \end{tabular}
+\end{center}
+where '-' means the corresponding representation is non-highest-weight.
+
+
+\printbibliography 
+
+\end{document}

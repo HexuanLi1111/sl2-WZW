@@ -1,30 +1,38 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
-\usepackage{indentfirst} 
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}   
+\usepackage{indentfirst}
 \setlength{\parindent}{2em}
 \usepackage{multicol}
 \usepackage{setspace}
-\usepackage{bm} 
+\usepackage{bm}
 \usepackage{pifont}
 \usepackage{float}
-\usepackage{cite}
 \usepackage{amssymb}
-\usepackage[tbtags]{amsmath}
-\usepackage{amsmath}
+\usepackage[tbtags]{amsmath} 
 \usepackage{tikz}
+
+\usepackage[
+    backend=biber,      
+    style=numeric-comp, 
+    sorting=none        
+]{biblatex}
+\addbibresource{references.bib} 
 \usepackage{hyperref}
-\usepackage{booktabs}
+
 \numberwithin{equation}{section}
-\renewcommand{\baselinestretch}{1.5} 
+\renewcommand{\baselinestretch}{1.5}
 
 \newcommand{\ket}[1]{\left| #1 \right\rangle}
 \newcommand{\vev}[1]{\left\langle #1 \right\rangle}
 
 
-
 \begin{document}
 \title{Degenerate representation of $\mathfrak{sl}_{2}$ WZW}
 \maketitle
+
+\tableofcontents
 
 \section{Affine Symmetry}
 \subsection{Symmetry algebra}
@@ -76,7 +84,7 @@ Especially we find
 \begin{equation}
     J^{\pm}_{0} \ket{j,\pm j} = 0.
 \end{equation}
-Hence we can classify irreps by the existence of highest/lowest weight states $\ket{j,\pm j}$\cite{ribault2022conformalfieldtheoryplane}. The principle series representations
+Hence we can classify irreps by the existence of highest/lowest weight states $\ket{j,\pm j}$\cite{Ribault:2014hia}. The principle series representations
 $\mathcal{C}^{j}_{\alpha}$ contain neither of these two, while the discrete series representations $\mathcal{D}^{j,\pm}$ contain
 $\ket{j,\mp j}$ respectively. The finite-dimensional representations contain both of these two states. The eigenvalues of $J^{0}_{0}$ in these 
 representations are listed below:
@@ -94,7 +102,6 @@ representations are listed below:
 \end{center}
 
 
-
 \section{Degenerate Representations of \texorpdfstring{$\widehat{\mathfrak{sl}_{2}}$}{Lg}}
 The $\widehat{\mathfrak{sl}_{2}}$ degenerate representations can be derived from the KZ-BPZ relation. The degenerate representations $V^{\vev{r,s}}$
  are labeled by two integer $r$ and $s$, which has spin
@@ -103,7 +110,7 @@ The $\widehat{\mathfrak{sl}_{2}}$ degenerate representations can be derived from
 \end{equation}
 and contains null vectors of level $N=rs$.
 \subsection{Level 1 null vector}
-The only possibility to have a level 1 null vector is $r = s = 1$. The corresponding null vector is given by \cite{stocco2022torusonepointblock2d}:
+The only possibility to have a level 1 null vector is $r = s = 1$. The corresponding null vector is given by \cite{Stocco:2022gah}:
 \begin{equation}
     \hat{N}^{c}_{-1} = K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} + j_{1,1} f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - 2 j^{2}_{1,1} J^{c}_{-1}. \label{NV}
 \end{equation}
@@ -218,7 +225,6 @@ This is analogous to the tensor product of irreps of $\mathfrak{sl}_{2}$
 \end{equation}
 We find that $N_{-1}\ket{j,m}$ is exactly the eigenvector corresponding to $j-1$. Hence the subrepresentation has spin $j_{1,1}-1 = j_{1,-1}$.
 
-\bibliographystyle{plain}
-\bibliography{degrep}
+\printbibliography 
 
 \end{document}
