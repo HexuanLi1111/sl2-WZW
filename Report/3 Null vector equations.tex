@@ -1,0 +1,187 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.3cm,bottom=1.2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}   
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage[tbtags]{amsmath} 
+\usepackage{amsthm}
+\usepackage{tikz}
+
+\usepackage[
+    backend=biber,      
+    style=numeric-comp, 
+    sorting=none        
+]{biblatex}
+\addbibresource{references.bib} 
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section] % Definitions are numbered within sections
+
+% Style for theorems (often bold and italicized)
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}      % Lemma shares the same counter as Theorem
+\newtheorem{corollary}[theorem]{Corollary} % Corollary shares the same counter
+\newtheorem{proposition}[theorem]{Proposition} % Proposition shares the same counter
+
+% Style for remarks and examples (often italicized or upright)
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+\numberwithin{equation}{section}
+\renewcommand{\baselinestretch}{1.5}
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vev}[1]{\left\langle #1 \right\rangle}
+
+
+\begin{document}
+\title{Null vector equations}
+\maketitle
+\tableofcontents
+
+
+\section{Isospin variables}
+In x-basis, $t^{a}$ acts on the isospin variables as differential operators 
+$t^{a} \phi^{\mathcal{R}}_{x}(z) = D^{\mathcal{R}}_{x} (t^{a}) \phi^{\mathcal{R}}_{x}(z)$, where 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            D^{j}_{x}(t^{+}) &= x^{2} \partial_{x} - 2 j x, \\
+            D^{j}_{x}(t^{0}) &= x \partial_{x} - j, \\
+            D^{j}_{x}(t^{-}) &= - \partial_{x}.
+        \end{aligned}
+    \right. \label{Diffx}
+\end{equation}
+In $\mu$-basis. $t^{a}$ acts as 
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            D^{j}_{\mu}(t^{+}) &= \mu \partial_{\mu}^{2} - \frac{j(j+1)}{\mu}, \\
+            D^{j}_{\mu}(t^{0}) &= - \mu \partial_{\mu}, \\
+            D^{j}_{\mu}(t^{-}) &= - \mu.
+        \end{aligned}
+    \right. \label{Diffmu}
+\end{equation}
+The x-basis field $\phi^{j}_{x}(z)$ and $\mu$-basis field $\phi^{j}_{\mu}(z)$ are related by the Fourier transformation 
+\begin{equation}
+    \phi^{j}_{x}(z) = \int \mathrm{d} \mu \, \mu^{-j-1} \mathrm{e}^{\mu x} \phi^{j}_{\mu}(z).
+\end{equation}
+
+\section{OPE Ward identites}
+The OPE between current fields $J^{a}(y)$ with primary field $\phi^{j}(z)$ is 
+\begin{equation}
+        J^{a}(y) \phi^{j}(z) \sim \frac{-\left(t^{a}\right)^{T} \phi^{j}(z)}{y-z} + \mathcal{O}(1). \label{OPE1}
+\end{equation}
+This OPE involves the transpose $ \left(t^{a}\right)^{T} $ of the Lie algebra generators, and the minus sign is needed for the associativity of OPEs.
+The OPE between two affine primary fields is 
+\begin{equation}
+    \phi^{j_{1}}_{x_{1}} \phi^{j_{1}}_{x_{2}} \sim \int \mathrm{d} j \int \mathrm{d} x_{3} \sum_{J \in \mathcal{J}} C^{j,J}_{j_{1},j_{2}}(z_{1},z_{2}) D^{J} \left[\begin{array}{ccc}
+j_{1} & j_2 & -j_3-1 \\
+x_1 & x_2 & x_3
+\end{array} \right] J \phi^{j}_{x}(z_{2}),
+\end{equation}
+where $\mathcal{J}$ is the set of creation operators. We single out the contribution of a primary field $\phi^{j}_{x}$:
+\begin{equation}
+    \phi^{j_{1}}_{x_{1}} (z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) \supset C^{j,\mathbf{1}}_{j_{1},j_{2}}(z_{1},z_{2}) D^{\mathbf{1}} \left[\begin{array}{ccc}
+j_{1} & j_2 & -j_3-1 \\
+x_1 & x_2 & x_3
+\end{array} \right] \phi^{j}_{x}(z_{2}),
+\end{equation}
+where the factor $D^{\mathbf{1}}$ is
+\begin{equation}
+    D^{\mathbf{1}} \left[\begin{array}{ccc}
+j_{1} & j_2 & j_3 \\
+x_1 & x_2 & x_3
+\end{array} \right] = x_{12}^{j_{12}^{3}} x_{23}^{j_{23}^{1}} x_{31}^{j_{31}^{2}}. \label{3px}
+\end{equation}
+On both sides of the OPE, we insert $\oint_{z_{1},z_{2}} dy \left(y-z_{2}\right)^{m} J^{a}(y)$, 
+where the integration contour encloses both $z_{1}$ and $z_{2}$. Substitute \ref{OPE1}, we find 
+\begin{equation}
+    \left( J^{a,(z_{2})}_{m} + z_{12}^{m} D^{j_{1}}_{x_{1}} \right) \phi^{j_{1}}_{x_{1}} (z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) 
+    \supset C^{j,\mathrm{1}}_{j_{1},j_{2}}(z_{1},z_{2}) D^{\mathbf{1}} \left[\begin{array}{ccc}
+j_{1} & j_2 & -j_3-1 \\
+x_1 & x_2 & x_3
+\end{array} \right] J^{a}_{m} \phi^{j}_{x}(z_{2}) \label{OPEWard}
+\end{equation}
+
+\section{Null vector equations}
+We have the following level 1 null vector \cite{Stocco:2022gah}
+\begin{equation}
+    \hat{N}^{c}_{1,1} = 2 K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} - t f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - t^{2} J^{c}_{-1},
+\end{equation}
+where $K_{ab}$ is the Killing form, and the Casimir takes the value $C = t^{2} - \frac{t}{2}$. Since we have $C = 2 j_{1,1}(j_{1,1}+1)$, 
+we are free to take $t = -2 j_{1,1}$. We can then write the null vectors in a more explicit form:
+\begin{equation}
+    \begin{aligned}
+        N^{0}_{1,1} =&4 J^{0}_{-1} J^{0}_{0} J^{0}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{0}_{0}  + 2 J^{-}_{-1} J^{+}_{0} J^{0}_{0} \\
+                    & +2 j_{1,1} J^{-}_{-1} J^{+}_{0} - 2 j_{1,1} J^{+}_{-1} J^{-}_{0} - 4 j^{2}_{1,1} J^{0}_{-1},\\
+        N^{-}_{1,1} =&4 J^{0}_{-1} J^{0}_{0} J^{-}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{-}_{0}  + 2 J^{-}_{-1} J^{+}_{0} J^{-}_{0} \\
+                    & -4 j_{1,1} J^{-}_{-1} J^{0}_{0} + 4 j_{1,1} J^{0}_{-1} J^{-}_{0} - 4 j^{2}_{1,1} J^{-}_{-1},\\
+        N^{+}_{1,1} =&4 J^{0}_{-1} J^{0}_{0} J^{+}_{0} + 2 J^{+}_{-1} J^{-}_{0} J^{+}_{0}  + 2 J^{-}_{-1} J^{+}_{0} J^{+}_{0} \\
+                    & +4 j_{1,1} J^{+}_{-1} J^{0}_{0} - 4 j_{1,1} J^{0}_{-1} J^{+}_{0} - 4 j^{2}_{1,1} J^{+}_{-1}.
+    \end{aligned}
+\end{equation}
+
+The vanishing of null vector $\hat{N}^{c}_{1,1} \phi^{1,1}_{x} = 0$ gives the following equation:
+\begin{equation}
+    \hat{N}^{c}_{1,1} \phi^{1,1}_{x_{1}} \phi^{j_{2}}_{x_{2}} \supset C^{j,\mathbf{1}}_{j_{1},j_{2}}(z_{1},z_{2}) D^{\mathbf{1}} \left[\begin{array}{ccc}
+j_{1} & j_2 & -j_3-1 \\
+x_1 & x_2 & x_3
+\end{array} \right] \hat{N}^{c}_{1,1} \phi^{j}_{x}(z_{2}) = 0.
+\end{equation}
+Substituting the OPE Ward identity \ref{OPEWard}, the contribution of primary fields should vanish. 
+This amounts to a differential equation of the 3-point function.
+\begin{equation}
+    \left( K_{a b} D_{x_2}\left(t^a\right) D_{x_1}\left(t^c\right) D_{x_1}\left(t^b\right)+ j_{1,1} f_{a b}^c D_{x_2}\left(t^a\right) D_{x_1}\left(t^b\right) 
+    - 2 j_{1,1}^2 D_{x_2}\left(t^c\right) \right) D^{\mathbf{1}} \left[\begin{array}{ccc}
+    j_{1} & j_2 & -j_3-1 \\
+    x_1 & x_2 & x_3
+    \end{array} \right] = 0.
+\end{equation}
+The equation corresponding to $c = -$ is
+\begin{equation}
+    \begin{aligned}
+        &\left\{ x_{12}^2 \partial_{1}^{2} \partial_{2} + 2 j_{2} x_{12} \partial_{1}^{2} + 2 (1-2j_{1,1})x_{12} \partial_{1}\partial_{2} \right. \\
+        &\left. + 2 (1-2j_{1,1})j_{2} \partial_{1} -2j_{1,1}(1-2j_{1,1}) \partial_{2} \right\} D^{\mathbf{1}} \left[\begin{array}{ccc}
+    j_{1} & j_2 & -j_3-1 \\
+    x_1 & x_2 & x_3
+    \end{array} \right] = 0 .
+    \end{aligned}
+\end{equation}
+By substituting the 3-point function in x-basis \ref{3px}, we find that the above equation has 3 solutions: 
+$j_{3} = j_{2} \pm j_{1,1}, -j_{2} - 1 + j_{1,1}$. It is consistant with the following fusion rule:
+\begin{equation}
+    \hat{\mathcal{R}}^{1,1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j+j_{1,1}} + \hat{\mathcal{R}}^{j-j_{1,1}}.
+\end{equation}
+In addition, the other two null vector equations are automatically satisfied, since 
+\begin{equation}
+    \begin{aligned}
+            \hat{N}^{0}_{1,1} \phi^{1,1}_{x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) &= \frac{1}{2} \left[ J^{+}_{0}, \hat{N}^{-}_{1,1} \right] \phi^{1,1}_{x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}} (z_{2}) \\
+            &= \frac{1}{2} J^{+}_{0} \left(\hat{N}^{-}_{1,1} \phi^{1,1}_{x_{1}}(z_{1}) \right) \phi^{j_{2}}_{x_{2}}(z_{2}) - \frac{1}{2} \hat{N}^{-}_{1,1} J^{+}_{0} \phi^{1,1}_{x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}).
+    \end{aligned}
+\end{equation}
+The first term involving $ \hat{N}^{-}_{1,1} \phi^{1,1}_{x_{1}}(z_{1})$ should be equal to 0. While the second term gives the following equation 
+\begin{equation}
+    D^{j_{1,1}}_{x_{1}}(t^{+}) \left( K_{a b} D_{x_2}\left(t^a\right) D_{x_1}\left(t^c\right) D_{x_1}\left(t^b\right)+ j_{1,1} f_{a b}^c D_{x_2}\left(t^a\right) D_{x_1}\left(t^b\right) 
+    - 2 j_{1,1}^2 D_{x_2}\left(t^c\right) \right) D^{\mathbf{1}} \left[\begin{array}{ccc}
+    j_{1} & j_2 & -j_3-1 \\
+    x_1 & x_2 & x_3
+    \end{array} \right] = 0.
+\end{equation}
+The differential operator $D^{j_{1,1}}_{x_{1}}(t^{+})$ appears on the left hand side, because of the transposition in the OPE \ref{OPE1}.
+Hence we should find exactly the same solutions, and correspondingly the same fusion rules.
+
+
+\printbibliography 
+
+\end{document}
