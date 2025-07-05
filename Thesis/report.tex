@@ -37,46 +37,54 @@
 
 \begin{document}
 \title{Fusion products of representations of the $\widehat{\mathfrak{sl}_{2}}$ algebra}
+\author{Hexuan Li}
 \maketitle
 
 
 \begin{abstract}
-    In this thesis, we review the representations appear in the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model and the degenerate representations that are needed 
-    to bootstrap this model. We determine fusion rules by solving Ward identities for both spectral flow preserving and violating cases. 
-    We then show that the fusion rule is consistant with the proposed fusion rules of the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model.
+    In this thesis, we review the representations that appear in the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model and the degenerate representations that are needed 
+    to bootstrap this model. 
+    We determine fusion rules of level 1 degenerate representation with affine highest weight representations by 
+    solving null vector equations in both spectral flow preserving and violating cases. 
 \end{abstract}
 
 \tableofcontents
 
 \section{Introduction and overview}
-The $\widetilde{SL}_{2}(\mathbb{R})$ Wess-Zumino-Witten (WZW) model is a conformal field theory (CFT) with additional 
-symmetry of affine Lie algebra $\widehat{\mathfrak{sl}_{2}}$. The study of the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model is motivated by 
-its connection with string theory in $AdS_{3}$. However, this model has not been completely solved: the 3-point function is not 
-fully known and the crossing symmetry has not been proved yet. \\
+The $\widetilde{SL}_{2}(\mathbb{R})$ Wess-Zumino-Witten (WZW) model is a conformal field theory (CFT) with an additional 
+$\widehat{\mathfrak{sl}_{2}}$ symmetry. The study of the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model is motivated by 
+its connection with string theory in $AdS_{3}$. The fusion rules of WZW models at fractional level have been well studied, 
+where there exist doubly degenerate representations. One set of the fusion rules of these models have been proposed by 
+Awata and Yamada \cite{Awata:1992sm}. However, this model at generic level has not been completely solved: the 3-point function is not 
+fully known and crossing symmetry has not been proved yet. 
 
+One important feature of the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model is the spectral flow. Maldacena and Ooguri have shown that the 
+physical spectrum cannot be built only from affine primaries but should also include spectral flowed fields \cite{Maldacena:2001km}. 
+They proposed a well-tested and widely believed spectrum of this model as well as the fusion rules.
 
+In order to solve this model, one needs to find the null vectors and the fusion rules between degenerate representations with other 
+representations, as what is done in solving the Liouville theory \cite{Ribault:2014hia} and the $H^{+}_{3}$-WZNW model \cite{Teschner:1997ft}. 
+One null vector of the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model at level 1 and the fusion rule with the corresponding null vector 
+was given in \cite{Stocco:2022gah}. However, only the spectral flow preserving case is considered in this paper. Hence the deduced 
+fusion rules might be incomplete. 
 
+In this paper, we determine the spectrum of spectral flowed degenerate representations. We find that the action of spectral flow on a 
+might give another degenerate representation at higher level. We determine fusion rules between degenerate representation and generic 
+representations by solving the null vector equations. We find the fusion with degenerate representations will also 
+give spectral flowed representations. 
 
+This thesis is organized as follows. We give a brief review of $\widetilde{SL}_{2}(\mathbb{R})$ model in section 2. In section 3, we 
+introduce the degenerate representations and give the spectrum the level 1 degenerate representations. In section 4, we apply the null 
+vector to the three-point functions to calculate the fusion rules between degenerate representations and affine highest weight representations.
 
+\section{\texorpdfstring{$\widetilde{SL}_{2}(\mathbb{R})$}{Lg} WZW model}
+In this chapter, we introduce the theoretical foundation of the WZW model, especially concentrating on the 
+$\widetilde{SL}_{2}(\mathbb{R})$ case. We begin by defining the non-Abelian affine symmetries and introducing the Sugawara construction. 
+Then, we define fields and representations that appear in this model. 
+At last, we give the correlation functions that are necessary to solve this model. 
 
-
-
-
-
-
-
-
-
-
-
-
-\section{SL(2,R) WZW model}
-In this chapter, we introduce the theoretical foundation of the WZW model, especially concentrate on the 
-$\widetilde{SL}_{2}(\mathbb{R})$ case. We begin by defining the algebraic structures, and then define fields and representations 
-appear in this model. At last, we give the correlation functions that are necessary to solve this model. 
-
-\subsection{Non-abelian affine symmetries}
-\subsubsection*{Reminders on Lie algebra}
+\subsection{Non-Abelian affine symmetries}
+\subsubsection*{Reminders on Lie algebras}
 A Lie algebra is a vector space $\mathfrak{g}$ equipped with a binary operation $\left[\cdot,\cdot \right]:\mathfrak{g}\times \mathfrak{g} \rightarrow \mathfrak{g}$,
 known as the Lie bracket, which satisfies the following axioms:
 \begin{itemize}
@@ -84,29 +92,31 @@ known as the Lie bracket, which satisfies the following axioms:
     \item Antisymmetry:$\quad \left[x,y\right] = - \left[y,x\right]$.
     \item Jacobi identity:$\quad \left[a,\left[b,c\right]\right]+\left[b,\left[c,a\right]\right]+\left[c,\left[a,b\right]\right] = 0$.
 \end{itemize}
-For a basis of generators $t^{a}$ of $\mathfrak{g}$, the Lie bracket is defined by their commutation relations:
+For a basis of generators $t^{a}$ of $\mathfrak{g}$, the Lie bracket is defined by the commutation relations:
 \begin{equation}
     \left[t^{a},t^{b}\right] = f^{ab}_{c} t^{c}.
 \end{equation}
 The numbers $f^{ab}_{c}$ are called structure constants of the Lie algebra. From these, one can define an invariant symmetric tensor 
-called the Killing form: 
+called the Killing tensor: 
 \begin{equation}
     K^{ab} = \frac{1}{2g} f^{ac}_{d}f^{bd}_{c},
 \end{equation}
-where $g$ is the dual Coxeter number of $\mathfrak{g}$. For our the case of $\mathfrak{sl}_{2}$, this number is $g = 2$. And the non-zero Killing form is 
+where $g$ is the dual Coxeter number of $\mathfrak{g}$. For the case of $\mathfrak{sl}_{2}$, this number is $g = 2$. And the non-zero 
+coefficients are:
 \begin{equation}
     K^{00} = \frac{1}{2}, \quad K^{+-} = K^{-+} = 1.
 \end{equation}
 
-A key operator is the quadratic Casimir operator, defined as  
+We define the quadratic Casimir operator $C$ as 
 \begin{equation}
-    C = K_{ab} t^{a} t^{b},
+    C = K_{ab} t^{a} t^{b}.
 \end{equation}
-which commutes with all Lie algebra generators: $\left[C,t^{a}\right] = 0$. This means that in an irreducible representation, 
+$C$ is a central element of the universal enveloping algebra $U(\mathfrak{g})$, which means that 
+$C$ commutes with all Lie algebra generators: $\left[C,t^{a}\right] = 0$. This implies that in an irreducible representation, 
 the Casimir operator is proportional to the identity. 
 
-For the algebra $\mathfrak{sl}_{2}$, its irreducible representations are labeled by a number $j$, called the spin. 
-The eigen value of the Casimir operator is 
+For the algebra $\mathfrak{sl}_{2}$, the irreducible representations are labeled by a number $j$, called the spin. 
+The eigenvalue of the Casimir operator is 
 \begin{equation}
     C = 2 t^{0} t^{0} + t^{+} t^{-} + t^{-} t^{+} = 2j(j+1).
 \end{equation}
@@ -114,8 +124,7 @@ The eigen value of the Casimir operator is
 \subsubsection*{Symmetry algebra}
 We now define the symmetry algebra of the WZW model. 
 The $G$ WZW model is a CFT with an infinite-dimensional affine Lie algebra, denoted as $\hat{\mathfrak{g}}_{k}$. 
-This algebra is generated by a number of dim$\mathfrak{g}$ of 
-holomorphic $\hat{\mathfrak{g}}_{k}$ currents $J^{a}(z)$ through their OPEs,
+This algebra is generated by dim$\mathfrak{g}$ holomorphic currents $J^{a}(z)$ through their operator product expansions(OPE), 
 \begin{equation}
     \boxed{
         J^{a}(z)J^{b}(w) = \frac{kK^{ab}}{(z-w)^{2}} + \frac{f^{ab}_{c} J^{c}(w)}{z-w} + \mathcal{O}(1), \label{OPEJJ}
@@ -136,13 +145,33 @@ which formally define the affine Lie algebra $\widehat{\mathfrak{sl}}(2)_{k}$
 \end{equation}
 
 \subsubsection*{The Sugawara construction}
-We introduce the Sugawara construction for the the energy momentum tensor $T(z)$
+The symmetry algebra of 2D CFT is the Virasoro algebra. The generators of Virasoro algebra are $\left(L_{n}\right)_{n \in \mathbb{Z}}$, and 
+the commutation relations are 
+\begin{equation}
+    \boxed{
+        \left[L_{m},L_{n}\right] = (m-n)L_{m+n} + \frac{c}{12} (n-1)n(n+1) \delta_{n+m,0}.
+    }
+\end{equation}
+We define a holomorphic field $T(y)$ as a generating function for $\left(L_{n}\right)$, known as the energy momentum tensor:
+\begin{equation}
+    T(y) = \sum_{n\in \mathbb{Z}} \frac{L_{n}^{(z)}}{(y-z)^{n+2}},
+\end{equation}
+where $L_{n}^{(z)}$ is the Virasoro generator at $z$. The OPE between $T$ and itself is 
+\begin{equation}
+    T(y) T(z) = \frac{c/2}{(y-z)^{4}} + \frac{2 T(z)}{(y-z)^{2}} + \frac{\partial_{z} T(z)}{y-z} + \mathcal{O}(1).
+\end{equation}
+A Virasoro primary field $V_{\Delta}(z)$ with conformal dimension $\Delta$ is defined by its OPE with $T(y)$: 
+\begin{equation}
+    T(y) V_{\Delta}(z) = \frac{\Delta V_{\Delta}(z)}{(y-z)^{2}} + \frac{\partial_{z} V_{\Delta}(z)}{y-z} + \mathcal{O}(1).
+\end{equation}
+
+In the WZW model, we introduce the Sugawara construction for the energy momentum tensor $T(z)$: 
 \begin{equation}
     \boxed{
         T(z) = \frac{K_{ab}}{2(k-g)} : J^{a}(z) J^{b}(z) : . \label{EM}
         } 
 \end{equation}
-$T$ is a Virasoro field with central charge $c = \frac{k \mathrm{dim} \mathfrak{g}}{k-g}$. In our case of $\widetilde{SL}_{2}(\mathbb{R})$ 
+The central charge of $T(z)$ is $c = \frac{k \mathrm{dim} \mathfrak{g}}{k-g}$. In our case of $\widetilde{SL}_{2}(\mathbb{R})$ 
 WZW model, this gives 
 \begin{equation}
     \boxed{
@@ -162,7 +191,7 @@ Using the commutation relations for the $J^{a}_{n}$ \eqref{CR1}, we can deduce c
 \end{equation}
 
 \subsection{Affine primary fields}
-An affine primary field $\phi^{\mathcal{j}}(z)$ associated with representation $\mathcal{R}^{j}$ is defined by its OPE with current field 
+An affine primary field $\phi^{j}(z)$ associated with representation $\mathcal{R}^{j}$ is defined by its OPE with current field 
 $J^{a}(y)$:
 \begin{equation}
     \boxed{
@@ -170,23 +199,23 @@ $J^{a}(y)$:
     }
 \end{equation}
 where $t^{a}$ is the generator of Lie algebra $\mathfrak{sl}_{2}$. This OPE involves the transposition of Lie algebra generators, which 
-flips the sign of commutation relations. Hence we need a minus sign in the OPE. The minus sign also ensures the associativity of 
-the OPE $J^{a}J^{b} \phi$. 
+ensures the associativity of the OPE $J^{a}J^{b} \phi$. Since the transposition flips the sign of commutation relations, we need an additional 
+minus sign.
 
-Followed from the Sugawara construction, an affine primary field is also a Virasoro primary field. 
-The OPE between $T(y)$ and $\phi^{j}(z)$ can be obtained from the Sugawara construction \ref{EM}:
+The OPE between $T(y)$ and $\phi^{j}(z)$ can be obtained from the Sugawara construction \eqref{EM}:
 \begin{equation}
-    T^{y} \phi^{j}(z) = \frac{K_{ab} (t^{a})}{k+g} \left( \frac{\frac{1}{2} t^{b} \phi^{j}(z)}{(y-z)^{2}} - \frac{\left(J^{b} \phi^{j}\right)(z)}{y-z} \right) + \mathcal{O}(1).
+    T(y) \phi^{j}(z) = \frac{K_{ab} t^{a}}{k-g} \left( \frac{\frac{1}{2} t^{b} \phi^{j}(z)}{(y-z)^{2}} - \frac{\left(J^{b} \phi^{j}\right)(z)}{y-z} \right) + \mathcal{O}(1).
 \end{equation}
-The conformal dimension of an affine primary field $\phi^{j}(x)$ is propotional to the Casimir operator $C = K_{ab} t^{a} t^{b}$ :
+Hence an affine primary field is also a Virasoro primary field. 
+The conformal dimension of $\phi^{j}(x)$ is propotional to the Casimir operator $C = K_{ab} t^{a} t^{b}$ :
 \begin{equation}
     \boxed{
-        \Delta_{j} = \frac{C(j)}{2(k+g)} = \frac{j(j+1)}{k+g}.
+        \Delta_{j} = \frac{C(j)}{2(k-g)} = \frac{j(j+1)}{k-g}.
     }
 \end{equation}
 
-Based on the state-field correspondence, the field $\phi^{j}(z)$ corresponds to an affine primary state $\ket{v^{j}}$ in the Hilbert spece. 
-The OPE \ref{OPEJPhi} implies the action of currents modes on this state:
+Based on the state-field correspondence, the field $\phi^{j}(z)$ corresponds to an affine primary state $\ket{v^{j}}$. 
+The OPE \eqref{OPEJPhi} implies the action of currents modes on this state:
 \begin{equation}
     \left\{
         \begin{aligned}
@@ -200,9 +229,9 @@ The OPE \ref{OPEJPhi} implies the action of currents modes on this state:
 For practical calculations, especially for solving Ward identities, it is useful to realize the abstract action of the generators 
 $t^{a}$ as differential operators acting on functions. We introduce the isospin variables and 
 represent the fields as functions of the isospin variables, 
-where $t^{a}$ acts on primary fields as differential operators $D^{j}(t^{a})$. We introduce two important bases:
+where $t^{a}$ acts on primary fields as differential operators $D^{j}(t^{a})$. We introduce three important bases:
 
-$\mathbf{x-basis}$: In this basis, a field is represented as a function $\phi^{j}_{x}$, and $t^{a}$ acts as 
+$x$-basis: In this basis, a field is represented as a function $\phi^{j}_{x}$, and $t^{a}$ acts as 
 \begin{equation}
     \left\{
         \begin{aligned}
@@ -212,12 +241,12 @@ $\mathbf{x-basis}$: In this basis, a field is represented as a function $\phi^{j
         \end{aligned}
     \right. \label{Diffx}
 \end{equation}
-Because of the transposition in \ref{OPEJPhi}, in the isospin formalism the generator $J^{a}_{0}$ acts as 
+Because of the transposition in \eqref{OPEJPhi}, in the isospin formalism the generator $J^{a}_{0}$ acts as 
 \begin{equation}
     J^{a}_{0} J^{b}_{0} \phi^{j}_{x}(z) = \left( -D^{j}_{x}\left(t^{b}\right) \right) \left( -D^{j}_{x}\left(t^{a}\right) \right) \phi^{j}_{x}(z).
 \end{equation}
 
-$\mathbf{\mu-basis}$: The $t^{a}$ acts as 
+$\mu$-basis: The $t^{a}$ acts as 
 \begin{equation}
     \left\{
         \begin{aligned}
@@ -233,14 +262,14 @@ The $x$-basis field $\phi^{j}_{x}(z)$ and $\mu$-basis field $\phi^{j}_{\mu}(z)$ 
     \phi^{j}_{x}(z) \sim \int \mathrm{d} \mu \, \mu^{-j-1} \mathrm{e}^{\mu x} \phi^{j}_{\mu}(z).
 \end{equation}
 
-Another important basis is the $\mathbf{m-basis}$, where the where the Casimir $C$ and $J^{0}_{0}$ are diagonalized. We denote the 
+$m$-basis: In this basis, the quadratic Casimir operator $C$ and $J^{0}_{0}$ are diagonalized. We denote the 
 state in $m$-basis to be $\ket{j,m}$. The action of 
 $J^{\pm}_{0}$ on $\ket{j,m}$ is defined to be:
 \begin{equation}
     \begin{aligned}
-        J^{-}_{0} \ket{j,m} &= (-j-1+m)\ket{j,m-1}, \\
+        J^{-}_{0} \ket{j,m} &= (j+m)\ket{j,m-1}, \\
         J^{0}_{0} \ket{j,m} &= m \ket{j,m} \\
-        J^{+}_{0} \ket{j,m} &= (-j-1-m)\ket{j,m+1}. \label{Jpm}
+        J^{+}_{0} \ket{j,m} &= (j-m)\ket{j,m+1}. \label{Jpm}
     \end{aligned}
 \end{equation}
 The field $\phi^{j}_{m}(z)$ corresponding to the state $\ket{j,m}$ is related to the $\mu$-basis field by 
@@ -252,24 +281,24 @@ The field $\phi^{j}_{m}(z)$ corresponding to the state $\ket{j,m}$ is related to
 \subsection{Irreducible representations}
 \subsubsection*{Irreducible representations of \texorpdfstring{$\mathfrak{sl}_{2}$}{Lg}}
 For a given affine Lie algebra $\widehat{\mathfrak{g}}$, we define the horizontal algebra to be the subalgebra generated by zero-mode 
-generators $J^{a}_{0}$. The central extension in \ref{CR1} vanishes for $m = 0$, hence the subalgebra is isomorphic to the underlying 
-Lie algebra $\mathfrak{g}$. An irreducible representation $\mathcal{R}$ of $\mathfrak{g}$ can be naturally extended to an affine 
-highest-weight representation $\widehat{\mathcal{R}}$, which is not necessarily irreducible though.
+generators $J^{a}_{0}$. The central extension in \eqref{CR1} vanishes for $m = 0$, hence the subalgebra is isomorphic to the underlying 
+Lie algebra $\mathfrak{g}$.
 
-We work in the m-basis. From \ref{Jpm}, we find two specific state, namely $\ket{j,\pm}$. They satisfy the following vanishing condition:
+We work in the $m$-basis. From \eqref{Jpm}, we find two null state $J^{\pm}_{0}\ket{j,\pm}$, which satisfy the following vanishing 
+condition:
 \begin{equation}
-    J^{\pm} \ket{j,\pm j} = 0.
+    J^{\mp}_{0}\left(J^{\pm}_{0} \ket{j,\pm j}\right) = 0.
 \end{equation}
 Hence we can classify different representations by the existence of these states.
 
-The unitary representations appear in the spectrum can be classified into several series:
+The representations appear in the spectrum can be classified into several series:
 \begin{itemize}
     \item Principle continuous series $\mathcal{C}^{j}_{\alpha}$. They are labeled by spin $j \in -\frac{1}{2} + \mathrm{i} \mathbb{R}_{+}$ and 
     a real number $\alpha \in \left(0,1\right)$. The eigenvalue $m$ of $J^{0}_{0}$ is unbounded both above and below, taking values $m \in \alpha + \mathbb{R}$.
     \item Discrete series $\mathcal{D}^{j,\pm}$. They are labeled by real spin $j \in (-\infty,-\frac{1}{2})$ and contain the state 
     $\ket{j,\mp j}$ respectively. Hence the spectrum is either bounded from below and from above.
 \end{itemize}
-Another crucial but non-unitary class of representations are the finite dimensional representations $\mathcal{E}^{j}$, which contain 
+Another crucial class of representations are the finite dimensional representations $\mathcal{E}^{j}$, which contain 
 both $\ket{j,j}$ and $\ket{j,-j}$. They exist only 
 when $j$ takes integer or half-integer values $j \in \mathbb{N}/2$, where $m$ takes values in $\{-j, -j+\frac{1}{2},\cdots,j-\frac{1}{2},j \}$.
 We summarize the properties of these representations in the following table.
@@ -285,21 +314,25 @@ We summarize the properties of these representations in the following table.
         \hline
     \end{tabular}
 \end{center}
-From the above representations of $\mathfrak{sl}_{2}$, we can naturally induce the corresponding representations of $\widehat{\mathfrak{sl}_{2}}$. 
-We plot the states by their eigenvalues of $L_{0}$ and $J^{0}_{0}$ in \ref{fig:irrep}.
 
-\begin{figure}[htbp]
+\subsubsection*{Affine highest representations}
+An irreducible representation $\mathcal{R}$ of $\mathfrak{g}$ can be naturally extended to an affine 
+highest-weight representation $\widehat{\mathcal{R}}$, which is not necessarily irreducible though.
+From the above representations of $\mathfrak{sl}_{2}$, we can naturally induce the corresponding representations of $\widehat{\mathfrak{sl}_{2}}$. 
+We plot the states by their eigenvalues of $L_{0}$ and $J^{0}_{0}$ in Figure.\eqref{fig:irrep}.
+
+\begin{figure}[htbp!]
     \centering 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
             
             \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^0$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}
                         
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -314,12 +347,12 @@ We plot the states by their eigenvalues of $L_{0}$ and $J^{0}_{0}$ in \ref{fig:i
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, 0) -- (1.2, 0) -- (\xmax, \xmax-1.2) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}            
             
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -340,12 +373,12 @@ We plot the states by their eigenvalues of $L_{0}$ and $J^{0}_{0}$ in \ref{fig:i
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, -\xmin-1.2) -- (-1.2, 0) -- (\xmax, 0) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
 
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x-0.2,\y) {};}}
                                     
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -360,20 +393,21 @@ We plot the states by their eigenvalues of $L_{0}$ and $J^{0}_{0}$ in \ref{fig:i
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, -\xmin-1) -- (-1, 0) -- (1, 0) -- (\xmax, \xmax-1) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
 
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north east, yshift=-2mm] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
+
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x,\y) {};}}
             
-            \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north west, font=\tiny] at (\xmin+0.3, \ymax-0.3) {
+            \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
                 \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\end{tabular}};
         \end{tikzpicture}
-        \caption{$\widehat{\mathcal{E}}^{j}$}
-        \label{fig:E}
-    \end{subfigure}
+    \caption{$\widehat{\mathcal{E}}^{j}$}
+    \label{fig:E}
+\end{subfigure}
 
     \caption{The spectra of irreducible representations of $\widehat{\mathfrak{sl}_{2}}$}
     \label{fig:irrep}
@@ -388,13 +422,13 @@ satisfying $\rho_{\omega_{1}} \circ \rho_{\omega_{2}}  = \rho_{\omega_{1} + \ome
         \rho_{\omega}(J^{0}_{m}) & = J^{0}_{m} + \frac{1}{2} k \omega \delta_{m,0}.
     \end{aligned}
 \end{equation}
-According to the Sugawara construction \ref{DefLn}, the spectral flow of Virasoro generators is 
+According to the Sugawara construction \eqref{DefLn}, the spectral flow of Virasoro generators is 
 \begin{equation}
     \rho_{\omega}(L_{m}) = L_{m} + \omega J^{0}_{m} + \frac{1}{4} k n^{2} \delta_{m,0}.
 \end{equation}
 Hence the conformal dimension of a spectral flowed primary field $\phi^{j,\omega}_{m}(z)$ is 
 \begin{equation}
-    \Delta^{j,\omega}_{m} = \Delta_{j} - \omega m - \frac{1}{4} k n^{2}. \label{SpecFlowConDim}
+    \Delta^{j,\omega}_{m} = \Delta_{j} - \omega m - \frac{1}{4} k m^{2}. \label{SpecFlowConDim}
 \end{equation}
 
 A representation $\widehat{\mathcal{R}} $ provides the action of generators $J^{a}_{n}$ on vector space $V$. Based on this representation, 
@@ -411,7 +445,7 @@ The conjugate representation of $\rho_{n} \left(\hat{\mathcal{R}} \right)$ is
 \begin{equation}
     \rho_{\omega} \left( \hat{\mathcal{R}} \right)^{*} = \rho_{-\omega} \left(\hat{\mathcal{R}}^{*} \right)
 \end{equation}
-In addition, it's believed that the spectral flow commutes with fusion \cite{Gaberdiel:2001ny}, 
+In addition, we conjecture that the spectral flow commutes with fusion, which has been proved in some specific cases \cite{Gaberdiel:2001ny}, 
 \begin{equation}
     \rho_{\omega_{1}} \left(\hat{\mathcal{R}}\right) \times \rho_{\omega_{2}} \left(\mathcal{R'}\right) = \rho_{\omega_{1} + \omega_{2}} \left(\hat{\mathcal{R}}\times \mathcal{R'}\right). \label{SpecFus}
 \end{equation}
@@ -421,9 +455,9 @@ Let's consider the action of spectral flow on affine highest-weight representati
     \begin{aligned}
         \hat{\mathcal{C}}^{j,\omega} &= \rho_{\omega} \left( \hat{\mathcal{C}}^{j} \right),\\
         \hat{\mathcal{D}}^{j, \frac{1}{2} + \omega} &= \rho_{\omega} \left( \hat{\mathcal{D}}^{j, +} \right).
-    \end{aligned}
+    \end{aligned} \label{SpecFlowNotation}
 \end{equation}
-From \ref{SpecFlowConDim}, we find the conformal dimension of states in $\hat{\mathcal{C}}^{j,\omega}$ of non-zero $\omega$ are not bounded 
+From \eqref{SpecFlowConDim}, we find the conformal dimension of states in $\hat{\mathcal{C}}^{j,\omega}$ of non-zero $\omega$ are not bounded 
 from below. Hence it cannot be an affine highest-weight representation.
 
 On the other hand, the representations $\hat{\mathcal{D}}^{j,\pm}$ are characterized by the existence of state $\ket{j,\mp j}$, 
@@ -444,7 +478,7 @@ Hence we find $\ket{j,-j,-1} = \ket{\frac{k}{2}-j, \frac{k}{2}-j}$, and
 \begin{equation}
     \hat{\mathcal{D}}^{j,-\frac{1}{2}} = \rho_{-1} \left( \hat{\mathcal{D}}^{j,+} \right) = \hat{\mathcal{D}}^{\frac{k}{2}-j,-}.
 \end{equation}
-Now we can use out new notation to write the discrete series representations as 
+Now we can use \ref{SpecFlowNotation} to write the discrete series representations as 
 \begin{equation}
     \widehat{\mathcal{D}}^{j,+} = \widehat{\mathcal{D}}^{j,\frac{1}{2}},\quad \widehat{\mathcal{D}}^{j,-} = \widehat{\mathcal{D}}^{\frac{k}{2}-j,-\frac{1}{2}}.
 \end{equation}
@@ -459,12 +493,12 @@ in \ref{fig:irrepSF}.
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
             
-            \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);
-            
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^0$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);            
+
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}
                         
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -478,13 +512,14 @@ in \ref{fig:irrepSF}.
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
+            
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (-\ymax+0.7, \ymax) -- (-\ymin+0.7, \ymin) -- (\xmax, \ymin) -- (\xmax, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2+0.5,\y) {};}}            
             
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -504,12 +539,12 @@ in \ref{fig:irrepSF}.
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, -\xmin-1.2) -- (-1.2, 0) -- (\xmax, 0) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
 
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x-0.2,\y) {};}}
                                     
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -524,12 +559,12 @@ in \ref{fig:irrepSF}.
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, 0) -- (-1.7, 0) -- (\ymax-1.7, \ymax) -- (\xmin, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x-0.7,\y) {};}}            
             
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
@@ -546,7 +581,7 @@ in \ref{fig:irrepSF}.
 \subsection{Correlation functions}
 
 \subsubsection*{Ward identities}
-The OPE \ref{OPEJJ} implies the behaviour of $J^{a}(z)$ near $y = \infty$:
+The OPE \eqref{OPEJJ} implies the behaviour of $J^{a}(z)$ near $y = \infty$:
 \begin{equation}
     \boxed{
         J^{a}(y) \underset{y \rightarrow \infty}{=} \mathcal{O}\left(\frac{1}{y^{2}}\right)
@@ -567,7 +602,7 @@ fields, the global Ward identities reduce to
 \begin{equation}
     \sum_{i} D^{j_{i}}_{x}(t^{a}) \vev{\prod \phi^{j_{i}}_{x_{i}}(z_{i})} = 0. \label{GlobalWard}
 \end{equation}
-On the other hand, if we take $\epsilon(y) = \frac{1}{(y-z_{i})^{n}}$ and assume all fields but possibilily the field at 
+On the other hand, if we take $\epsilon(y) = \frac{1}{(y-z_{i})^{n}}$ and assume all fields but possibily the field at 
 $z_{i}$ to be affine primary fields, we find the following local Ward identities:
 \begin{equation}
     \vev{J^{a}_{-n} \phi^{\sigma_{i}}(z_{i}) \prod_{k \neq i} \phi^{j_{k}}_{x_{k}}(z_{k})} = \sum_{k\neq i} \frac{D^{j_{k}}_{x}(t^{a})}{(z_{k}-z_{i})^{n}} \vev{ \phi^{\sigma_{i}}(z_{i}) \prod_{k \neq i} \phi^{j_{k}}_{x_{k}}(z_{k})} \label{LocalWard}
@@ -576,26 +611,31 @@ $z_{i}$ to be affine primary fields, we find the following local Ward identities
 \subsubsection*{Three-point functions}
 So far, we have only considered the chiral field $\phi^{j}(z)$ belongs to some representation $\widehat{\mathcal{R}^{j}}$ of 
 $\widehat{\mathfrak{sl}_{2}}$. However, since the SL(2,R) WZW model is CFT with $\widehat{\mathfrak{sl}_{2}}\times\widehat{\mathfrak{sl}_{2}}$ 
-symmetry, the physical field $\phi^{j}(z,\bar{z})$ transforms under both $\widehat{\mathfrak{sl}_{2}}$ algebras. One may assume that 
-the physical fields are a product $\phi^{j}(z,\bar{z}) \sim \phi^{j}(z)\phi^{j}(\bar{z})$ of chiral fields. However, this chiral 
+symmetry, the field $\phi^{j}(z,\bar{z})$ transforms under both $\widehat{\mathfrak{sl}_{2}}$ algebras. One may assume that 
+the fields are a product $\phi^{j}(z,\bar{z}) \sim \phi^{j}(z)\phi^{j}(\bar{z})$ of chiral fields. However, this chiral 
 factorization fails at the level of zero modes. Hence we need to construct the correlation functions with both holomorphic and anti-holomorphic 
 part.
 
 When considreing both the left-moving and right-moving part, the transformation between $x$-basis and $\mu$-basis is then given by 
 \begin{equation}
-    \phi^{j}_{x,\bar{x}}(z,\bar{z}) = \int \mathrm{d}^{2} \mu \, |\mu|^{-2j-2} \mathrm{e}^{\mu x - \bar{\mu} \bar{x}} \phi^{j}_{\mu,\bar{\mu}}(z,\bar{z}).
+    \phi^{j}_{x,\bar{x}}(z,\bar{z}) = \int_{\mathbb{C}} \mathrm{d}^{2} \mu \, |\mu|^{-2j-2} \mathrm{e}^{\mu x - \bar{\mu} \bar{x}} \phi^{j}_{\mu,\bar{\mu}}(z,\bar{z}).
 \end{equation}
 The fields in $m$-basis are related to the $\mu$-basis fields by 
 \begin{equation}
-    \phi^{j}_{m,\bar{m}}(z,\bar{z}) = N^{j}_{m,\bar{m}} \int \frac{\mathrm{d}^{2} \mu }{|\mu|^{2}} \, \mu^{-m} \bar{\mu}^{-\bar{m}} \phi^{j}_{\mu,\bar{\mu}} (z,\bar{z}).
+    \phi^{j}_{m,\bar{m}}(z,\bar{z}) = N^{j}_{m,\bar{m}} \int_{\mathbb{C}} \frac{\mathrm{d}^{2} \mu }{|\mu|^{2}} \, \mu^{-m} \bar{\mu}^{-\bar{m}} \phi^{j}_{\mu,\bar{\mu}} (z,\bar{z}).
 \end{equation}
-where we use the following notation:
+where the normalization factor is 
 \begin{equation}
-    \left| F(z,m) \right|^{2} = F(z,m) \times F(z\rightarrow \bar{z}, m \rightarrow \bar{m}).
+    N^{j}_{m,\bar{m}} = \frac{\Gamma(j+1-m)}{\Gamma(\bar{m} - j)}.
+\end{equation} 
+We use the following notation:
+\begin{equation}
+    \left| F(z,m) \right|^{2} = F(z,m) \times F(\bar{z},\bar{m}).
 \end{equation}
+Please notice that although $\bar{z}$ is the complex conjugate of $z$, $\bar{m}$ is not necessarily the complex conjugate of $m$. 
 
-The 3-point functions with only affine primary fields can be determined from the global Ward identities \ref{GlobalWard}. 
-In x-basis, we find the solution to be:
+The 3-point functions with only affine primary fields can be determined from the global Ward identities \eqref{GlobalWard}. 
+In $x$-basis, we find the solution to be:
 \begin{equation}
     \begin{aligned}
             \vev{\phi^{j_{1}}_{x_{1},\bar{x}_{1}}(z_{1},\bar{z}_{1}) \phi^{j_{2}}_{x_{2},\bar{x}_{2}}(z_{2},\bar{z}_{2}) \phi^{j_{3}}_{x_{3},\bar{x}_{3}}(z_{3},\bar{z}_{3})} =
@@ -607,14 +647,14 @@ In x-basis, we find the solution to be:
     \end{aligned} \label{3pointfuncx}
 \end{equation}
 where $z_{ij} = z_{i} - z_{j}$ and $\Delta^{K}_{I} = \sum_{i \in I} \Delta_{j_{i}} - \sum_{k \in K} \Delta_{j_{k}}$. The structure constant 
-$C(j_{1},j_{2},j_{3})$ is not fully determined yet. The x-dependence is included in factor $D$:
+$C(j_{1},j_{2},j_{3})$ is not fully determined yet. The x-dependence is included in the factor:
 \begin{equation}
     D \left[\begin{array}{ccc}
     j_{1} & j_{2} & j_{3} \\
     x_{1} & x_{2} & x_{3}
     \end{array} \right] = |x_{12}|^{2 j_{12}^{3}} |x_{23}|^{2 j_{23}^{1}} |x_{31}|^{2 j_{31}^{2}}.
 \end{equation}
-In $\mu$-basis, the corresponding $D$ is 
+In the $\mu$-basis, the corresponding factor is 
 \begin{equation}
     \begin{aligned}
         D \left[\begin{array}{ccc}
@@ -634,9 +674,8 @@ The factor $\gamma$ is defined by the gamma function
     \gamma(x) = \frac{\Gamma(x)}{\Gamma(1-x)}.
 \end{equation}
 
-\subsubsection*{Three-point functions with spectral flow violating}
-So far we have only discussed the 3-point function with affine primary fields, by which we can determine the fusion rule where the 
-spectral flow is preserved. However, the spectral flow is not necessarily preserved under the fusion. 
+\subsubsection*{Three-point functions with spectral flow violation}
+So far we have only discussed the 3-point function with affine primary fields. However, the spectral flow is not necessarily preserved under the fusion. 
 Actually, in $n$-point function, the spectral flow can violate by at most $n-2$ units. To understand the full set of fusion rules, 
 we must therefore consider these spectral flow-violating correlation functions.
 
@@ -668,12 +707,12 @@ the spectral flow violating 3-point function in $m$-basis is :
 The Gamma functions are the solution to the global Ward identities. They will be used to extract the fusion rules of the theory.
 
 \section{Degenerate representations}
-Except for the representations appear in the spectrum, there exist a special discrete set of representations known as the 
+In addition the representations that appear in the spectrum, there exist a discrete set of representations known as the 
 degenerate representations. Degenerate representations give constraints on the structure constant and hence play an essential role in 
 making the model solvable. 
 
-The defining feature of a degenerate representation is the existence of null vectors (or null states) within its corresponding Verma module.
-A descendent state $\ket{\chi} = \hat{N} \ket{j_{\hat{N}}} $ is called a null vector if it is also an affine primary state, which means 
+The defining feature of a degenerate representation is the vanishing of null vectors (or null states) within its corresponding Verma module.
+A descendant state $\ket{\chi} = \hat{N} \ket{j_{\hat{N}}} $ is called a null vector if it is also an affine primary state, which means 
 that it is annihilated by all the positive mode currents:
 \begin{equation}
     J^{a}_{n>0} \ket{\chi} = 0, \label{nullvectoreq}
@@ -686,7 +725,7 @@ The irreducible representation $\widehat{\mathcal{R}}^{j}$ is then obtained by t
 \end{equation}
 
 At the level of fields, the field $\phi^{j_{\hat{N}}}$ corresponding to
-$\ket{j_{\hat{N}}}$ is a degenerate field, which has a vanishing descendent 
+$\ket{j_{\hat{N}}}$ is a degenerate field, which has a vanishing descendant 
 \begin{equation}
     \hat{N} \phi^{j_{\hat{N}}} = 0.
 \end{equation}
@@ -719,7 +758,7 @@ The corresponding null vector is given in \cite{Stocco:2022gah}:
     \hat{N}^{c}_{1,1} = K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} + j_{1,1} f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - 2 j^{2}_{1,1} J^{c}_{-1}. \label{nullvector}
 \end{equation}
 We have no constraint on the $m$ of the null vector, hence the level 1 degenerate representation could belong to either 
-principle continuous series or discrete series. This null vector satisfies the null vector equation \ref{nullvectoreq}:
+principle continuous series or discrete series. This null vector satisfies the null vector equation \eqref{nullvectoreq}:
 \begin{equation}
     \begin{aligned}
         J^{d}_{1}, \hat{N}^{c}_{-1} \ket{j_{1,1},m}
@@ -747,7 +786,7 @@ $J^{a}_{-1}\ket{j_{1,1},m}$.
         \hat{N}^{+}_{-1} \ket{j_{1,1},m-1} = & ((j_{1,1}-m+1)(j_{1,1}+m) +2 j_{1,1}(m-1) -2 j_{1,1}^2) \, J^{+}_{-1}  \ket{j_{1,1},m-1} \\
         & + (2(j_{1,1}-m+1)m-2j_{1,1}(j_{1,1}-m+1)) \, J^{0}_{-1}  \ket{j_{1,1},m} \\
         & + (j_{1,1}-m+1)(j_{1,1}-m) \, J^{-}_{-1} \ket{j_{1,1},m+1}\\
-        = & (j_{1,1}+1+m)(-j_{1,1}-m)\left( J^{+}_{-1} \ket{j_{1,1},m-1} + 2 J^{0}_{-1} \ket{j_{1,1},m} - J^{-1}_{-1} \ket{j_{1,1},m+1} \right)\\
+        = & (j_{1,1}+1+m)(-j_{1,1}-m)\Big( J^{+}_{-1} \ket{j_{1,1},m-1} + 2 J^{0}_{-1} \ket{j_{1,1},m} - J^{-1}_{-1} \ket{j_{1,1},m+1} \Big)\\
     \end{aligned}
 \end{equation}
 We define 
@@ -800,10 +839,6 @@ After diagonalization, we find the eigenvectors and the corresponding eigenvalue
         \end{aligned}
     \right.
 \end{equation}
-This is analogous to the tensor product of irreps of $\mathfrak{sl}_{2}$
-\begin{equation}
-    \mathrm{Adj} \otimes R_{j} = R_{j-1} \oplus R_{j} \oplus R_{j-1}.
-\end{equation}
 We find that $N_{-1}\ket{j,m}$ is exactly the eigenvector corresponding to $j-1$. Hence the subrepresentation has spin $j_{1,1}-1 = j_{1,-1}$.
 
 \subsection{Spectral flowed degenerate representations}
@@ -816,8 +851,6 @@ It satisfies the flowed null vector equation automatically:
 We define a representation to be a spectral flowed degenerate representation if it contains a spectral flowed null vector, which can 
 be obtained by applying spectral flow to the degenerate representations.
 
-A spectral flowed degenerate representation belong to the principle continuous series is rather simple, since it's no more a affine 
-highest representation. However, a spectral flowed degenerate representation belong to the discrete series is more complicated. 
 Since 
 \begin{equation}
     \rho_{-1} \left( \widehat{\mathcal{D}}^{j,+} \right) = \widehat{\mathcal{D}}^{\frac{k}{2}-j,-},
@@ -827,7 +860,7 @@ representation. On the other hand, we have
 \begin{equation}
     \frac{k}{2} - j_{r,s} = \frac{k}{2} - \frac{s-1}{2} + \frac{k+2}{2} r = \frac{-s-1}{2} + \frac{k+2}{2}(r+1) = -j_{r+1,s}-1.
 \end{equation}
-Spin $j$ and $-j-1$ are equivalent since they corresponds to the same Casimir operator $C = 2j(j+1)$. Hence we find 
+Hence we find 
 \begin{equation}
     \rho_{-1} \left( \widehat{\mathcal{D}}^{\vev{r,s},+} \right) = \widehat{\mathcal{D}}^{\vev{r+1,s},-},
 \end{equation}
@@ -835,20 +868,20 @@ which means that the affine highest-weight degenerate representation $\widehat{\
 degenerate representation. 
 
 \subsubsection*{spectral flowed vacuum representation} 
-Now we consider the spectral flow of the vacuum representation, i.e. the degenerate representation $\hat{\mathcal{E}}^{1}$. The vacuum 
-representation is essential to the fusion rules since the fusion the fusion between any representation $\hat{\mathcal{R}}^{j}$ with 
+Now we consider the spectral flow of the vacuum representation, i.e. of the degenerate representation $\hat{\mathcal{E}}^{1}$. The vacuum 
+representation is essential to the fusion rules since the fusion between any representation $\hat{\mathcal{R}}^{j}$ with 
 the vacuum representation should give $\hat{\mathcal{R}}^{j}$ itself back: 
 \begin{equation}
     \hat{\mathcal{E}}^{1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j}.
 \end{equation}
-Hence from our assumption \ref{SpecFus}, we find 
+Hence from our assumption \eqref{SpecFus}, we find 
 \begin{equation}
     \rho_{n} \left( \hat{\mathcal{E}}^{1} \right) \times \hat{\mathcal{R}}^{j} = \rho_{n} \left( \hat{\mathcal{R}}^{j} \right).
 \end{equation}
 
 One could view $\hat{\mathcal{E}}^{0,1}$ as
 \begin{equation}
-    \hat{\mathcal{E}}^{0,1} = \hat{\mathcal{D}}^{\vev{0,1},+} \cap \hat{\mathcal{D}}^{\vev{0,1},-}
+    \hat{\mathcal{E}}^{0,1} = \hat{\mathcal{D}}^{\vev{0,1},+} = \hat{\mathcal{D}}^{\vev{0,1},-}
 \end{equation}
 which implies the following relation: 
 \begin{equation}
@@ -901,12 +934,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
             
             \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^0$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}
             
             \draw[blue, dashed, thick] (\xmin, 1) -- (\xmax, 1);
@@ -923,12 +956,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (-\ymax+0.7, \ymax) -- (-\ymin+0.7, \ymin) -- (\xmax, \ymin) -- (\xmax, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2+0.5,\y) {};}}    
             
             \draw[blue, dashed, thick] (-\ymax+1.7, \ymax) -- (-\ymin+1.7, \ymin);
@@ -950,12 +983,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, -\xmin-1.2) -- (-1.2, 0) -- (\xmax, 0) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
 
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x-0.2,\y) {};}}
 
             \draw[blue, dashed, thick] (-\ymax+0.8, \ymax) -- (-0.2, 1) -- (\xmax, 1) ;
@@ -974,12 +1007,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, 0) -- (-1.7, 0) -- (\ymax-1.7, \ymax) -- (\xmin, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x-0.7,\y) {};}}       
 
             \draw[blue, dashed, thick] (\xmin, 2) -- (-0.7, 2) -- (\ymax-2.7, \ymax) ;
@@ -999,12 +1032,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, \ymax) -- (0, 0) -- (\xmax, \ymax) -- cycle;
 
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x,\y) {};}}
 
             \draw[blue, dashed, thick] (\xmin, 0) -- (\xmax, 0) ;
@@ -1023,12 +1056,12 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
         \centering
         \begin{tikzpicture}[scale=0.65, font=\small]
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
-            \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+            \clip (\xmin-1, \ymin) rectangle (\xmax+1, \ymax+1);
 
             \fill[violet!20] (\xmin, 0) -- (0.5, 0) -- (\ymax/2+0.5, \ymax) -- (\xmin, \ymax) -- cycle;
             
-            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west] {$J_0^3$};
-            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
+            \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0/m$};
+            \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0/\Delta$};
             \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.5,\y) {};}}       
 
             \draw[blue, dashed, thick] (0.5, 0) -- (\xmax, \xmax-0.5) ;
@@ -1050,10 +1083,10 @@ $L_{0}$. The states appears in a representation are denoted by the shadowed area
 In CFT, fusion rules form the algebra of primary fields, dictating how they combine. We could determine the fusion rules from the 
 OPE 
 \begin{equation}
-    \phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \sim 
+    \phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \sim \sum_{j_{3},\omega_{3}}
     \vev{\phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \left(\phi^{j_{3},\omega_{3}}(z_{3}) \right)^{*}} \phi^{j_{3},\omega_{3}}(z_{3}).
 \end{equation}
-The fusion $\widehat{\mathcal{R}}^{j_{1},\omega_{1}} \widehat{\mathcal{R}}^{j_{2},\omega_{2}} \rightarrow \widehat{\mathcal{R}}^{j_{3},\omega_{3}}$
+The fusion $\widehat{\mathcal{R}}^{j_{1},\omega_{1}} \widehat{\mathcal{R}}^{j_{2},\omega_{2}} \ni \widehat{\mathcal{R}}^{j_{3},\omega_{3}}$
 is allowed only if the 3-point function 
 $\vev{\phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \left(\phi^{j_{3},\omega_{3}}(z_{3}) \right)^{*}}$ is non-zero.
 
@@ -1068,12 +1101,12 @@ The vanishing of null vector $\hat{N}^{c}_{1,1} \phi^{1,1}_{x} = 0$ gives the fo
 \begin{equation}
     \vev{\hat{N}^{c}_{1,1} \phi^{1,1}_{x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})} = 0.
 \end{equation}
-This equation involves operators $J^{a}_{-1}$. We substitute the local Ward identity \ref{LocalWard}, and get the following differential 
+This equation involves operators $J^{a}_{-1}$. We substitute the local Ward identity \eqref{LocalWard}, and get the following differential 
 equation:
 \begin{equation}
     \sum_{s=2,3} \frac{1}{z_{s1}}
-    \left\{ K_{a b} D_{x_s}\left(t^a\right) D_{x_1}\left(t^c\right) D_{x_1}\left(t^b\right)+ j_{1,1} f_{a b}^c D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right) 
-    - 2 j_{1,1}^2 D_{x_s}\left(t^c\right) \right\}
+    \Big\{ K_{a b} D_{x_s}\left(t^a\right) D_{x_1}\left(t^c\right) D_{x_1}\left(t^b\right)+ j_{1,1} f_{a b}^c D_{x_s}\left(t^a\right) D_{x_1}\left(t^b\right) 
+    - 2 j_{1,1}^2 D_{x_s}\left(t^c\right) \Big\}
     \vev{\phi^{1,1}_{x_{1}}(z_{1}) \phi^{j_{2}}_{x_{2}}(z_{2}) \phi^{j_{3}}_{x_{3}}(z_{3})}  = 0. \label{nullvectoreqx}
 \end{equation}
 We use the conformal symmetry to send $z_{1}, z_{2}, z_{3} \rightarrow 0,1,\infty$, where only the term propotional to $\frac{1}{z_{21}}$ 
@@ -1087,18 +1120,18 @@ survives. Then the null vector equation corresponding to $c=-$ is simplified to
     \end{array} \right] = 0 .
     \end{aligned}
 \end{equation}
-By substituting the 3-point function in x-basis \ref{3pointfuncx}, we get the following condition on the spins: 
+By substituting the 3-point function in $x$-basis \eqref{3pointfuncx}, we get the following condition on the spins: 
 \begin{equation}
     \left( j_{1,1}^{2} - (j_{2}-j_{3})^{2} \right)(1+j_{1,1}+j_{2}+j_{3}) = 0.
 \end{equation}
 The solution to this equation is $j_{3} = j_{2} \pm j_{1,1}, -j_{2} - 1 + j_{1,1}$. Since the above equation 
-is symmetric for $j_{2}$ and $j_{3}$, the other term in \ref{nullvectoreqx} proportional to $\frac{1}{z_{31}}$ should give 
+is symmetric for $j_{2}$ and $j_{3}$, the other term in \eqref{nullvectoreqx} proportional to $\frac{1}{z_{31}}$ should give 
 the same condition. Therefore we determine the following fusion rule:
 \begin{equation}
-    \hat{\mathcal{R}}^{1,1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j+j_{1,1}} + \hat{\mathcal{R}}^{j-j_{1,1}}.
+    \hat{\mathcal{R}}^{1,1} \times \hat{\mathcal{R}}^{j} \sup \hat{\mathcal{R}}^{j+j_{1,1}} + \hat{\mathcal{R}}^{j-j_{1,1}}.
 \end{equation}
 In addition, the other two null vector equations of $c = 0,+$ can be deduced from the commutation relation 
-$\left[ J^{a}, \hat{N}^{b}_{1,1} \right] = \frac{ab}{c} \hat{N}^{c}_{1,1}$. Hence all three null vector equations give the 
+$\left[ J^{a}, \hat{N}^{b}_{1,1} \right] = f^{ab}_{c} \hat{N}^{c}_{1,1}$. Hence all three null vector equations give the 
 same fusion rule. 
 
 \subsubsection*{Spectral flowed vacuum representation}
@@ -1107,7 +1140,7 @@ $\hat{\mathcal{R}}^{j}$ back:
 \begin{equation}
     \hat{\mathcal{E}}^{1} \times \hat{\mathcal{R}}^{j} = \hat{\mathcal{R}}^{j}.
 \end{equation}
-Hence from our assumption \ref{SpecFus}, we find 
+Hence from our conjecture \eqref{SpecFus}, we find 
 \begin{equation}
     \rho_{\pm 1} \left( \hat{\mathcal{E}}^{1} \right) \times \hat{\mathcal{R}}^{j} = \rho_{\pm 1} \left( \hat{\mathcal{R}}^{j} \right).
 \end{equation}
@@ -1125,20 +1158,20 @@ By using the local Ward identity, we obtain
         + \frac{1}{(z_{31})^{2}} \vev{ \phi^{j_{1}}_{m_{1}}(z_{1}) \phi^{j_{2}}_{m_{2}}(z_{2}) \rho_{-1}\left(J^{-}_{0}\right) \phi^{j_{3}}_{m_{3}}(z_{3})}.
     \end{aligned}
 \end{equation}
-Substituting the global Ward identity \ref{GlobalWard}to the above null vector equation, 
+Substituting the global Ward identity \eqref{GlobalWard} to the above null vector equation, 
 we find the null vector equation is simplified to 
 \begin{equation}
     (\frac{1}{z_{21}}- \frac{1}{z_{31}}) \vev{ \phi^{j_{1}}_{m_{1}}(z_{1}) J^{-}_{0} \phi^{j_{2}}_{m_{2}}(z_{2}) \phi^{j_{3}}_{m_{3}}(z_{3})} - 
     \frac{1}{(z_{31})^{2}} \vev{ \phi^{j_{1}}_{m_{1}}(z_{1}) \phi^{j_{2}}_{m_{2}}(z_{2}) \rho_{-1}\left(J^{-}_{0}\right) \phi^{j_{3}}_{m_{3}}(z_{3})} = 0.
 \end{equation}
-Substitute the spectral flow violating 3-point function \ref{3pointfunc_m-1}. 
+Substitute the spectral flow violating 3-point function \eqref{3pointfunc_m-1}. 
 Since $\Delta^{j_{3},-1}_{m3-1} = \Delta^{j_{3},-1}_{m_{3}} - 1$, we find the $z$-dependence of these two terms is exactly the same. 
 The equation is simplified to 
 \begin{equation}
     (-j_{2}-1+m_{2}) (m_{2}+j_{2}) - (-j_{3}-1+m_{3}) (m_{3}+j_{3}) = 0.
 \end{equation}
 Since the $m$ is conserved, we have $m_{3} = -m_{2} + 1$. We find the above equation has only two solutions $j_{3} = j_{2}, -j_{2}-1$. 
-Hence we proved that 
+Hence we show that 
 \begin{equation}
     \rho_{1} \left(\widehat{\mathcal{E}}^{1}\right) \times \widehat{\mathcal{R}}^{j} = \rho_{1} \left( \hat{\mathcal{R}}^{j} \right).
 \end{equation}
@@ -1181,10 +1214,11 @@ The fusion rule should be symmetric for $\rho_{\pm 1}$, hence we should also hav
 
 In conclusion, we conjecture the fusion rule between a degenerate representation and a generic affine highest weight representation to be: 
 \begin{equation}
-    \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} = \widehat{\mathcal{R}}^{j+j_{1,1}} \oplus \widehat{\mathcal{R}}^{j-j_{1,1}}
+    \boxed{
+        \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} = \widehat{\mathcal{R}}^{j+j_{1,1}} \oplus \widehat{\mathcal{R}}^{j-j_{1,1}}
     \oplus \rho_{1} \left( \widehat{\mathcal{R}}^{j} \right) \oplus \rho_{-1} \left( \widehat{\mathcal{R}}^{j} \right).
+    }
 \end{equation}
-
 
 \printbibliography
 \end{document}
