@@ -99,7 +99,7 @@
         \draw[red,thick] (0,0) -- (2,0)    node[midway, above] {$k$};
       \end{tikzpicture}
     }}
-    = \sum_{k \in \mathcal{T}}
+    = \sum_{k' \in \mathcal{T}}
     \vcenter{\hbox{
       \begin{tikzpicture}[
           scale=0.5,
@@ -112,7 +112,7 @@
         \draw (0,2) -- (-1,3)   node[left]  {2};
         \draw (0,2) -- (1,3)    node[right] {3};
         % 绘制中间的传播子和标签
-        \draw[red,thick] (0,0) -- (0,2)    node[midway, right] {$k$};
+        \draw[red,thick] (0,0) -- (0,2)    node[midway, right] {$k'$};
       \end{tikzpicture}
     }}
     \end{equation*}
@@ -124,7 +124,7 @@
     \end{block}
 \end{frame}
 
-\section{\texorpdfstring{$\widetilde{SL}_{2}(\mathbb{R})$}{Lg} WZW model}
+\section{\texorpdfstring{$\widetilde{SL}_{2}(\mathbb{R})$}{SL(2,R)} WZW model: Review}
 
 \begin{frame}{Symmetry algebra}
   \begin{itemize}
@@ -134,10 +134,10 @@
       \end{equation*}
     \item The $\widehat{\mathfrak{sl}_{2}}$ algebra are defined by:
       \begin{equation*}
-          \left[ J^{a}_{m}, J^{b}_{n} \right] = f^{ab}_{c} J^{c}_{m+n} + k m K^{ab} \delta_{m+n,0}, \quad m,n \in \mathbb{Z}
+          \left[ J^{a}_{m}, J^{b}_{n} \right] = f^{ab}_{c} J^{c}_{m+n} + k m K^{ab} \delta_{m+n,0}, \quad a,b \in \{0,\pm\} \, ,\,  m,n \in \mathbb{Z}
       \end{equation*}
-      where $k$ is the level, and $K^{ab} = \frac{1}{2g} f^{ac}_{d}f^{bd}_{c}$ is the Killing tensor.
-    \item The Sugawara construction of the conformal symmetry generator:
+      where $k$ is a constant, and $K^{ab} = \frac{1}{2} f^{ac}_{d}f^{bd}_{c}$ is the Killing tensor.
+    \item The Sugawara construction of the dilation operator:
       \begin{equation*}
         L_{0} = \frac{K_{ab}}{2(k-2)} \left(J^{a}_{0}J^{b}_{0} + 2\sum_{m > 0 } J^{a}_{-m} J^{b}_{m}\right).
       \end{equation*}
@@ -148,7 +148,7 @@
 
   We characterize different representations by the spin $j$ and the eigenvalue $m$ of $J^{0}_{0}$:
   \begin{itemize}
-    \item $\mathcal{C}^{j}_{\alpha}$: $j \in \frac{1}{2} + i \mathbb{R}_{+}$, $m \in \alpha + \mathbb{Z}$.
+    \item $\mathcal{C}^{j}_{\alpha}$: $j \in -\frac{1}{2} + i \mathbb{R}_{+}$, $m \in \alpha + \mathbb{Z}$.
     
       \begin{center}
       % node distance 定义了两个节点边框之间的距离
@@ -156,6 +156,8 @@
           % --- 1. 使用高级循环，同时绘制点和下方的坐标标签 ---
           % 循环的格式是: \x / \labelText
           % \x 是横坐标，\labelText 是要显示的标签文本
+          \draw[-{Stealth}] (-4, 0) -- (4, 0) node[anchor=north west] {$J_0^0$};
+
           \foreach \x / \labelText in {
               -3/{},
               -2/{\cdots}, 
@@ -165,12 +167,10 @@
               2/{\cdots},
               3/{}
           } {
-              \filldraw[black] (\x, 0) circle (2pt);
+              \filldraw[red] (\x, 0) circle (2pt);
               
               \node[anchor=base] at (\x, -0.4) {$\labelText$};
           }
-
-          \draw[-{Stealth}] (-4, 0) -- (4, 0) node[anchor=north west] {$J_0^0$};
 
       \end{tikzpicture}
 
@@ -182,21 +182,25 @@
           dot/.style={circle, fill, inner sep=1.5pt}
       ]
 
-          \draw (-2.5, 0) -- (-0.5, 0);
+          \draw (-3.5, 0) -- (-0.5, 0);
 
-          \draw[-{Stealth}] (0.5, 0) -- (2.5, 0) node[anchor=north west] {$J^{0}_{0}$};
+          \draw[-{Stealth}] (0.5, 0) -- (3.5, 0) node[anchor=north west] {$J^{0}_{0}$};
 
-          \node[dot] at (-2, 0) {}; 
+          \node[dot, black] at (-3, 0) {}; 
+
+          \node[dot, red] at (-2, 0) {}; 
           \node[below=3pt] at (-2, 0) {$-j$}; 
           
-          \node[dot] at (-1, 0) {}; 
+          \node[dot, red] at (-1, 0) {}; 
           \node[below=3pt] at (-1, 0) {$-j+1$}; 
 
-          \node[dot] at (1, 0) {}; 
+          \node[dot, red] at (1, 0) {}; 
           \node[below=3pt] at (1, 0) {$j-1$};
 
-          \node[dot] at (2, 0) {}; 
+          \node[dot, red] at (2, 0) {}; 
           \node[below=3pt] at (2, 0) {$j$};
+
+          \node[dot, black] at (3, 0) {}; 
 
           \node at (0, 0) {$\cdots$};
           
@@ -216,9 +220,9 @@
   % node distance 定义了两个节点边框之间的距离
   \begin{tikzpicture}[node distance=4cm] 
       
-      \node[draw, thick, font=\sffamily, align=center] (c1) {$\mathcal{R}^{j}$ of $\mathfrak{sl}_{2}$};
+      \node[draw, thick, font=\sffamily, align=center] (c1) {\textcolor{red}{$\mathcal{R}^{j}$ of $\mathfrak{sl}_{2}$}};
 
-      \node[draw, thick, font=\sffamily, right=of c1, align=center] (c2) {$\widehat{\mathcal{R}}^{j}$ of $\widehat{\mathfrak{sl}_{2}}$};
+      \node[draw, thick, font=\sffamily, right=of c1, align=center] (c2) {\textcolor{blue}{$\widehat{\mathcal{R}}^{j}$ of $\widehat{\mathfrak{sl}_{2}}$}};
 
       \draw[-stealth, thick] (c1) -- node[above] {Acting creation operators} node[below] {$J^{a}_{-n}, n>0$} (c2);
       
@@ -236,7 +240,9 @@
             \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);
             \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0$};
             \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
-            \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {-2,-1} {\node[dot] at (\x+0.2,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {0} {\node[dot, red] at (\x+0.2,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {1,2,3,4} {\node[dot, blue] at (\x+0.2,\y) {};}}
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
                 \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\end{tabular}};
         \end{tikzpicture}
@@ -252,7 +258,20 @@
             \fill[violet!20] (\xmin, -\xmin-1) -- (-1, 0) -- (1, 0) -- (\xmax, \xmax-1) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
             \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0$};
             \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
-            \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {-2,-1} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-4,-3,-2} {\foreach \y in {0} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-1,0,1} {\foreach \y in {0} {\node[dot, red] at (\x,\y) {};}}
+            \foreach \x in {2,3,4} {\foreach \y in {0} {\node[dot] at (\x,\y) {};}}
+            
+            \foreach \x in {-4,-3} {\foreach \y in {1} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-2,...,2} {\foreach \y in {1} {\node[dot, blue] at (\x,\y) {};}}
+            \foreach \x in {3,4} {\foreach \y in {1} {\node[dot] at (\x,\y) {};}}
+
+            \foreach \x in {-4} {\foreach \y in {2} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-3,...,3} {\foreach \y in {2} {\node[dot, blue] at (\x,\y) {};}}
+            \foreach \x in {4} {\foreach \y in {2} {\node[dot] at (\x,\y) {};}}
+            
+            \foreach \x in {-4,...,4} {\foreach \y in {3,4} {\node[dot, blue] at (\x,\y) {};}}
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
                 \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\end{tabular}};
         \end{tikzpicture}
@@ -269,19 +288,20 @@
   % node distance 定义了两个节点边框之间的距离
   \begin{tikzpicture}[node distance=4cm] 
       
-      \node[draw, thick, font=\sffamily, align=center] (c1) {$\mathcal{R}^{j}$ of $\mathfrak{sl}_{2}$};
+      \node[draw, thick, font=\sffamily, align=center] (c1) {\textcolor{red}{$\mathcal{R}^{j}$ of $\mathfrak{sl}_{2}$}};
 
-      \node[draw, thick, font=\sffamily, right=of c1, align=center] (c2) {$\widehat{\mathcal{R}}^{j}$ of $\widehat{\mathfrak{sl}_{2}}$};
+      \node[draw, thick, font=\sffamily, right=of c1, align=center] (c2) {\textcolor{blue}{$\widehat{\mathcal{R}}^{j}$ of $\widehat{\mathfrak{sl}_{2}}$}};
 
       \draw[-stealth, thick] (c1) -- node[above] {Acting creation operators} node[below] {$J^{a}_{-n}, n>0$} (c2);
       
   \end{tikzpicture}
   \end{center}
+
 \begin{figure}
     \centering
     \def\tikzscale{0.5} 
 
-    \begin{subfigure}[b]{0.48\textwidth}
+        \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \begin{tikzpicture}[scale=\tikzscale, font=\small] % 使用定义的 scale
             \def\xmin{-4.5} \def\xmax{4.5} \def\ymin{-2.5} \def\ymax{4.5}
@@ -289,10 +309,14 @@
             \fill[violet!20] (\xmin, 0) rectangle (\xmax, \ymax);
             \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0$};
             \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
-            \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x+0.2,\y) {};}}
-            \node[dot, red] at (0.2, 1) {};
+            \foreach \x in {-4,...,4} {\foreach \y in {-2,-1} {\node[dot] at (\x+0.2,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {0} {\node[dot, red] at (\x+0.2,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {1,2,3,4} {\node[dot, blue] at (\x+0.2,\y) {};}}
+
+            \node[dot, green] at (0.2, 1) {};
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
-                \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\end{tabular}};
+            \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\\ \tikz\fill[green] (0,0) circle (3pt) ;&Null vector\\ \end{tabular}};
+
         \end{tikzpicture}
         \caption{$\widehat{\mathcal{C}}^{j}_{\alpha}$}
         \label{fig:C1}
@@ -306,7 +330,20 @@
             \fill[violet!20] (\xmin, -\xmin-1) -- (-1, 0) -- (1, 0) -- (\xmax, \xmax-1) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
             \draw[-{Stealth[]}] (\xmin, 0) -- (\xmax, 0) node[anchor=north west, xshift=-10pt] {$J_0^0$};
             \draw[-{Stealth[]}] (0, \ymin) -- (0, \ymax) node[anchor=south east] {$L_0$};
-            \foreach \x in {-4,...,4} {\foreach \y in {-2,...,4} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-4,...,4} {\foreach \y in {-2,-1} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-4,-3,-2} {\foreach \y in {0} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-1,0,1} {\foreach \y in {0} {\node[dot, red] at (\x,\y) {};}}
+            \foreach \x in {2,3,4} {\foreach \y in {0} {\node[dot] at (\x,\y) {};}}
+            
+            \foreach \x in {-4,-3} {\foreach \y in {1} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-2,...,2} {\foreach \y in {1} {\node[dot, blue] at (\x,\y) {};}}
+            \foreach \x in {3,4} {\foreach \y in {1} {\node[dot] at (\x,\y) {};}}
+
+            \foreach \x in {-4} {\foreach \y in {2} {\node[dot] at (\x,\y) {};}}
+            \foreach \x in {-3,...,3} {\foreach \y in {2} {\node[dot, blue] at (\x,\y) {};}}
+            \foreach \x in {4} {\foreach \y in {2} {\node[dot] at (\x,\y) {};}}
+            
+            \foreach \x in {-4,...,4} {\foreach \y in {3,4} {\node[dot, blue] at (\x,\y) {};}}
             \node[draw, fill=white, rounded corners=2pt, align=left, anchor=north east, font=\tiny] at (\xmax-0.2, \ymax-0.2) {
                 \begin{tabular}{rl}\tikz\fill[violet!20](0,0)rectangle(0.2,0.2);&Allowed states\end{tabular}};
         \end{tikzpicture}
@@ -333,11 +370,11 @@
   \end{itemize}
 \end{frame}
 
-\section{Fusion rules}
+\section{Fusion rules: Results}
 
-\begin{frame}{My contributations}
+\begin{frame}{My contributions}
   \begin{itemize}
-    \item Spectral flowed degenerate representation
+    \item The structure of spectral flowed degenerate representation
         \begin{itemize}
           \item Spectral flowed vacuum representation
         \end{itemize}
@@ -353,54 +390,59 @@
   \begin{itemize}
     \item The fusion rules are determined from the OPE 
           \begin{equation*}
-              \phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \sim \sum_{j_{3},\omega_{3}}
-              \vev{\phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \left(\phi^{j_{3},\omega_{3}}(z_{3}) \right)^{*}} \phi^{j_{3},\omega_{3}}(z_{3}).
+            \begin{aligned}
+              \phi^{\ket{j_{1},m_{1},\omega_{1}}} & (z_{1})\phi^{\ket{j_{2},m_{2}, \omega_{2}}}(z_{2}) \sim \\
+               \sum_{j_{3},\omega_{3}} 
+              &\left\langle  \phi^{\ket{j_{1},m_{1},\omega_{1}}}(z_{1}) \phi^{\ket{j_{2},m_{2}, \omega_{2}}}(z_{2}) \left(\phi^{\ket{j_{3},m_{3},\omega_{3}}}(z_{3}) \right)^{\dagger}\right\rangle \phi^{\ket{j_{3},m_{3},\omega_{3}}}(z_{3}).
+            \end{aligned}
           \end{equation*}
           \begin{equation*}
-            \vev{\phi^{j_{1},\omega_{1}}(z_{1}) \phi^{j_{2},\omega_{2}}(z_{2}) \left(\phi^{j_{3},\omega_{3}}(z_{3}) \right)^{*}} 
-            \neq 0 \Longleftrightarrow \widehat{\mathcal{R}}^{j_{1},\omega_{1}} \times \widehat{\mathcal{R}}^{j_{2},\omega_{2}} \supset \widehat{\mathcal{R}}^{j_{3},\omega_{3}}
+              \vev{\phi^{\ket{j_{1},m_{1},\omega_{1}}}(z_{1}) \phi^{\ket{j_{2},m_{2}, \omega_{2}}}(z_{2}) \left(\phi^{\ket{j_{3},m_{3},\omega_{3}}}(z_{3}) \right)^{\dagger}} 
+            \neq 0
+          \end{equation*}
+          \begin{equation*}
+             \Longleftrightarrow \widehat{\mathcal{R}}^{j_{1},\omega_{1}} \times \widehat{\mathcal{R}}^{j_{2},\omega_{2}} \supset \widehat{\mathcal{R}}^{j_{3},\omega_{3}}
           \end{equation*}
     \item The fusion rules involving degenerate representations is constrained by the null vector equations:
           \begin{equation*}
-            \hat{N} \ket{j,m,\omega} = 0 \Longrightarrow \vev{\hat{N} \phi^{j,\omega}_{m}(z)\, \prod_{i} \phi^{j_{i},\omega_{i}}_{m_{i}} (z_{i} )} = 0.
+            \hat{N} \ket{j,m,\omega} = 0 \Longrightarrow \vev{\hat{N} \phi^{\ket{j,m,\omega}}(z)\, \prod_{i} \phi^{\ket{j_{i},m_{i},\omega_{i}}} (z_{i} )} = 0.
           \end{equation*}
-
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Spectral flowed vacuum representation}
   \begin{itemize}
-    \item $\rho_{\pm} \left(\widehat{\mathcal{E}}^{0}\right)$ is a level 1 degenerate representation, with the corresponding null vector:
+    \item $\rho_{\pm 1} \left(\widehat{\mathcal{E}}^{0}\right)$ is a level 1 degenerate representation, with the corresponding null vector:
       \begin{equation*}
-        J^{\mp}_{-1} \ket{k/2,\mp k/2} = 0.
+        J^{\mp 1}_{-1} \ket{k/2,\mp k/2} = 0.
       \end{equation*}
     \item The corresponding null vector equation:
       \begin{equation*}
-          \vev{J^{\pm}_{-1} \phi \Big(\ket{k/2,\pm k/2 },z_{1} \Big) \phi \Big(\ket{j_{2},m_{2}}, z_{2}\Big)
-            \phi \Big(\ket{j_{3},m_{3}, \mp 1}, z_{3} \Big) }= 0,
+          \vev{J^{\pm}_{-1} \phi^{\ket{k/2,\pm k/2 } }(z_{1} ) \phi ^{\ket{j_{2},m_{2}}} ( z_{2})
+            \phi ^{\ket{j_{3},m_{3}, \mp 1}} ( z_{3} ) }= 0,
       \end{equation*}
       \begin{equation*}
-          \Rightarrow j_{2}(j_{2}+1) = j_{3}(j_{3}+1)
+          \Longrightarrow j_{2}(j_{2}+1) = j_{3}(j_{3}+1)
       \end{equation*}
     \item We have the following fusion rule:
       \begin{equation*}
-          \rho_{\pm 1} \left( \hat{\mathcal{E}}^{0} \right) \times \widehat{\mathcal{R}}^{j} = \rho_{\pm 1} \left( \widehat{\mathcal{R}}^{j} \right).
+          \rho_{\pm 1} \left( \widehat{\mathcal{E}}^{0} \right) \times \widehat{\mathcal{R}}^{j} = \rho_{\pm 1} \left( \widehat{\mathcal{R}}^{j} \right).
       \end{equation*}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Fusion with spectral flowed representations}
+\begin{frame}{Fusion rules with spectral flowed representations}
   \begin{itemize}
-    \item We conjecture that the spectral flow commutes with fusion, which means, 
+    \item We conjecture that the spectral flow commutes with fusion,  
       \begin{equation*}
-          \rho_{\omega_{1}} \left(\hat{\mathcal{R}}\right) \times \rho_{\omega_{2}} \left(\mathcal{R'}\right) = \rho_{\omega_{1} + \omega_{2}} \left(\hat{\mathcal{R}}\times \mathcal{R'}\right). \label{SpecFus}
+          \rho_{\omega_{1}} \left(\widehat{\mathcal{R}}^{j_{1}}\right) \times \rho_{\omega_{2}} \left(\widehat{\mathcal{R}}^{j_{2}}\right) = \rho_{\omega_{1} + \omega_{2}} \left(\widehat{\mathcal{R}}^{j_{1}} \times\widehat{\mathcal{R}}^{j_{2}}\right). \label{SpecFus}
       \end{equation*}
     \item The fusion rule with $\rho_{\pm 1} \left(\widehat{\mathcal{E}}^{0}\right)$ proves the simplest case:
       \begin{equation*}
         \begin{aligned}
           \rho_{\pm 1} \left(\widehat{\mathcal{R}}^{j_{1}}\right) \times \widehat{\mathcal{R}}^{j_{2}} 
-          &= \left(\rho_{\pm 1} \left( \hat{\mathcal{E}}^{0} \right) \times \widehat{\mathcal{R}}^{j_{1}} \right) \times \widehat{\mathcal{R}}^{j_{2}}\\
-          &= \rho_{\pm 1} \left( \hat{\mathcal{E}}^{0} \right) \times \left( \widehat{\mathcal{R}}^{j_{1}}  \times \widehat{\mathcal{R}}^{j_{2}} \right) \\
+          &= \left(\rho_{\pm 1} \left( \widehat{\mathcal{E}}^{0} \right) \times \widehat{\mathcal{R}}^{j_{1}} \right) \times \widehat{\mathcal{R}}^{j_{2}}\\
+          &= \rho_{\pm 1} \left( \widehat{\mathcal{E}}^{0} \right) \times \left( \widehat{\mathcal{R}}^{j_{1}}  \times \widehat{\mathcal{R}}^{j_{2}} \right) \\
           &= \rho_{\pm 1} \left(\widehat{\mathcal{R}}^{j_{1}} \times \widehat{\mathcal{R}}^{j_{2}} \right).
         \end{aligned}
       \end{equation*}
@@ -409,13 +451,14 @@
 
 \begin{frame}{Level 1 degenerate representations}
   \begin{itemize}
-    \item The level 1 degenerate representation $\widehat{\mathcal{R}}^{\vev{1,1}}$ is of spin 
+    \item Degenerate representations $\widehat{\mathcal{R}}^{\vev{r,s}}$ are labeled by two integers $r$ and $s$ for $r \geq 0, s\geq 1 $, with 
+    the corresponding null vector at level $N = rs$.
       \begin{equation*}
-        j_{1,1} = -\frac{k+2}{2}.
+          j_{\vev{r,s}} = \frac{s-1}{2} - \frac{k+2}{2} r.
       \end{equation*}
-    \item The null vector is given by the following null operator:
+    \item The null vector for level 1 degenerate representation is given by the following null operator:
       \begin{equation*}
-          \hat{N}^{c} = K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} + j_{1,1} f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - 2 j^{2}_{1,1} J^{c}_{-1}.
+          \hat{N}^{c} = K_{ab} J^{a}_{-1} J^{b}_{0} J^{c}_{0} + j_{\vev{1,1}} f^{c}_{ab} J^{a}_{-1} J^{b}_{0} - 2 j^{2}_{\vev{1,1}} J^{c}_{-1}.
       \end{equation*}
   \end{itemize}
 \end{frame}
@@ -424,15 +467,15 @@
   \begin{itemize}
     \item Let's first consider the spectral flow preserving case. The null vector equation gives
       \begin{equation*}
-        \vev{\hat{N}^{c} \phi \Big(\ket{j_{1,1},m_{1}}, z_{1}\Big) \phi \Big(\ket{j_{2},m_{2}},z_{2} \Big) \phi \Big(\ket{j_{3},m_{3}},z_{3} \Big)} = 0. 
+        \vev{\hat{N}^{c} \phi^{\ket{j_{\vev{1,1}},m_{1}}} (z_{1}) \phi^{\ket{j_{2},m_{2}}} (z_{2}) \phi^{\ket{j_{3},m_{3}}} (z_{3})} = 0. 
       \end{equation*}
       \begin{equation*}
-        \Longrightarrow \left( j_{1,1}^{2} - (j_{2}-j_{3})^{2} \right)(1+j_{1,1}+j_{2}+j_{3}) = 0.
+        \Longrightarrow \left( j_{\vev{1,1}}^{2} - (j_{2}-j_{3})^{2} \right)(1+j_{\vev{1,1}}+j_{2}+j_{3}) = 0.
       \end{equation*}
-      The solution to this equation is $j_{3} = j_{2} \pm j_{1,1}, -j_{2} - 1 + j_{1,1}$. 
+      The solution to this equation is $j_{3} = j_{2} \pm j_{\vev{1,1}}, -j_{2} - j_{\vev{1,1}} - 1$. 
     \item We find the following fusion rule: 
       \begin{equation*}
-        \hat{\mathcal{R}}^{\vev{1,1}} \times \hat{\mathcal{R}}^{j} \supset \hat{\mathcal{R}}^{j+j_{1,1}} \oplus \hat{\mathcal{R}}^{j-j_{1,1}}.
+        \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} \supset \widehat{\mathcal{R}}^{j+j_{\vev{1,1}}} \oplus \widehat{\mathcal{R}}^{j-j_{\vev{1,1}}}.
       \end{equation*}
   \end{itemize}
 \end{frame}
@@ -441,41 +484,31 @@
   \begin{itemize}
     \item Next, let's consider the spectral flow violating case. The null vector equation becomes
       \begin{equation*}
-          \vev{\hat{N}^{c} \phi \Big(\ket{j_{1,1},m_{1}}, z_{1}\Big) \phi \Big(\ket{j_{2},m_{2}},z_{2} \Big) \phi \Big(\ket{j_{3},m_{3}, \pm 1},z_{3} \Big)} = 0. 
+          \vev{\hat{N}^{c} \phi^{\ket{j_{\vev{1,1}},m_{1}}} (z_{1}) \phi^{\ket{j_{2},m_{2}}} (z_{2}) \phi^{\ket{j_{3},m_{3}, \pm 1}} (z_{3})} = 0.
       \end{equation*}
       \begin{equation*}
         \Longrightarrow j_{2}(j_{2}+1) = j_{3} (j_{3}+1)
       \end{equation*}
     \item We find: 
       \begin{equation*}
-        \hat{\mathcal{R}}^{\vev{1,1}} \times \hat{\mathcal{R}}^{j} \supset \rho_{ 1} \left(\hat{\mathcal{R}}^{j}\right) \oplus \rho_{ 1} \left(\hat{\mathcal{R}}^{j}\right).
+        \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} \supset \rho_{ 1} \left(\widehat{\mathcal{R}}^{j}\right) \oplus \rho_{- 1} \left(\widehat{\mathcal{R}}^{j}\right).
       \end{equation*}
     \item In conclusion, we find the fusion rule with the level 1 degenerate representation to be:
       \begin{equation*}
-        \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} = \widehat{\mathcal{R}}^{j+j_{1,1}} \oplus \widehat{\mathcal{R}}^{j-j_{1,1}}
+        \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} = \widehat{\mathcal{R}}^{j+j_{\vev{1,1}}} \oplus \widehat{\mathcal{R}}^{j-j_{\vev{1,1}}}
     \oplus \rho_{1} \left( \widehat{\mathcal{R}}^{j} \right) \oplus \rho_{-1} \left( \widehat{\mathcal{R}}^{j} \right). \label{mainresult}
       \end{equation*}
   \end{itemize}
 \end{frame}
 
-
 \section{Conclusion}
 
 \begin{frame}{Conclusion and Outlook}
   \begin{itemize}
-    \item We determined the fusion rules between spectral flowed vacuum representation with affine highest weight representations, which 
-        gives 
-        \begin{equation*}
-          \rho_{\pm 1} \left( \hat{\mathcal{E}}^{1} \right) \times \hat{\mathcal{R}}^{j} = \rho_{\pm 1} \left( \hat{\mathcal{R}}^{j} \right).
-        \end{equation*}
-    \item We also give the fusion rule between level 1 degenerate representations 
-          with affine highest representations: 
-        \begin{equation*}
-           \widehat{\mathcal{R}}^{\vev{1,1}} \times \widehat{\mathcal{R}}^{j} = \widehat{\mathcal{R}}^{j+j_{1,1}} \oplus \widehat{\mathcal{R}}^{j-j_{1,1}}
-            \oplus \rho_{1} \left( \widehat{\mathcal{R}}^{j} \right) \oplus \rho_{-1} \left( \widehat{\mathcal{R}}^{j} \right). 
-        \end{equation*}
-    \item In the future, one possible generalizing of our results is to extend the fusion rules with spectral flowed vacuum represnetations 
-          to generic $\omega \in \mathbb{Z}$.
+    \item The fusion rules with degenerate representations are essential to solve the $\widetilde{SL}_{2}(\mathbb{R})$ WZW model. 
+    \item We determined the fusion rules with spectral flowed vacuum representation and level 1 degenerate representations. 
+    \item In the future, one possible generalizing of our results is to extend the fusion rules with spectral flowed vacuum representations 
+          to generic $\omega \in \mathbb{Z}$. 
   \end{itemize}
 \end{frame}
 
@@ -484,32 +517,10 @@
 \begin{frame}[plain]
   \vfill
   \begin{center}
-    \Huge Thank You
+    \Huge Thank You !
   \end{center}
   \vfill
 \end{frame}
-
-\section*{Appendix}
-
-\begin{frame}{Sugawara construction}
-  \begin{itemize}
-    \item The symmetry algebra of 2D CFT is the Virasoro algebra, whose generators are $\left(L_{n}\right)_{n \in \mathbb{Z}}$. 
-      The commutation relations for Virasoro generators are 
-        \begin{equation}
-          \left[L_{m},L_{n}\right] = (m-n)L_{m+n} + \frac{c}{12} (n-1)n(n+1) \delta_{n+m,0}.
-        \end{equation}
-      The energy momentum $T(z)$ is a generating function of $L_{n}$:
-        \begin{equation}
-          T(z) = \sum_{n \in \mathbb{Z}} L_{n} z^{-n-2}.
-        \end{equation}
-    \item We introduce the Sugawara construction for the energy momentum tensor $T(z)$: 
-      \begin{equation}
-        T(z) = \frac{K_{ab}}{2(k-2)} : J^{a}(z) J^{b}(z) : , \label{EM}
-      \end{equation}
-      where $K_{ab} = K^{ab} = \frac{1}{2g} f^{ac}_{d}f^{bd}_{c}$
-  \end{itemize}
-\end{frame}
-
 
 
 \end{document}
